@@ -5,4 +5,8 @@ const app = express()
 
 app.use('/', express.static(path.join(__dirname, 'client/build')))
 
-app.listen(3000)
+app.get("/api/name", (req, res) => {
+    res.json( {name:'andy'} )
+})
+
+app.listen(5001)
