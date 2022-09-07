@@ -1,5 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
+
+import './Components/SearchPage.js';
+import './Components/RandomTweetsPage.js'
 import { useEffect } from "react";
 
 function App() {
@@ -12,20 +15,18 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className = "container">
+        <nav>
+            <ul>
+                <li><a href='./Components/SearchPage.js'>Search</a></li>
+                <li><a href='./Components/RandomTweetsPage.js'>Random Tweets</a></li>
+            </ul>
+        </nav>
+      </div>
+
+      <h1>New Twitter project</h1>
+
+
     </div>
   );
 }
