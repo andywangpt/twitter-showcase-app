@@ -1,12 +1,20 @@
 import './App.css';
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
+import { useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './Components/SearchPage.js';
-import './Components/RandomTweetsPage.js'
-import { useEffect } from "react";
+import './Components/RandomTweetsPage.js';
+
+
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+import Home from './Pages/Home'
+import RandomTweet from './Pages/RandomTweet';
+import SearchTweet from './Pages/SearchTweet';
+import ErrorPage from './Pages/ErrorPage';
+
 
 function App() {
-
   useEffect(() => {
     fetch("api/name")
       .then((res) => res.json())
@@ -14,20 +22,22 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <div className = "container">
-        <nav>
-            <ul>
-                <li><a href='./Components/SearchPage.js'>Search</a></li>
-                <li><a href='./Components/RandomTweetsPage.js'>Random Tweets</a></li>
-            </ul>
-        </nav>
-      </div>
-
-      <h1>New Twitter project</h1>
-
-
-    </div>
+    <>
+    <Router>
+      <nav>
+        <Link to='/home' > Home   </Link>
+        <Link to='/searchtweet' > Search Tweet   </Link>
+        <Link to='randomtweet' > Random Tweet   </Link>
+      </nav>
+      <Routes>
+        <Route path='/home' element={<Home />}/>
+        <Route path='/randomtweet' element={<RandomTweet />}/>
+        <Route path='/searchtweet' element={<SearchTweet />}/>
+        <Route path='*' element={<ErrorPage />}/>
+      </Routes>
+    </Router>
+    <div className='footer'>Footer</div>     
+    </>
   );
 }
 
