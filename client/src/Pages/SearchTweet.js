@@ -8,32 +8,38 @@ function SearchTweet() {
     let {username} = useParams
 
     const [userInput, setUserInput] = useState('')
-    const [searchValue, setSearchValue] = useState(''
-    )
+    //const [searchValue, setSearchValue] = useState('')
     const handleInputChange = (e) => {
         setUserInput(e.target.value)
     }
 
     function searchButton () {
-        setSearchValue(userInput)
+        //setSearchValue(userInput)
     }
 
     return (
-        <>
-            <div className='w-25 p-3'>
-                <input className='w-25 p-3' type='text' value={userInput} onChange={handleInputChange} placeholder='search for tweets' />
-                <button className='btn-primary' onClick={searchButton}>Search</button>
+        <div className='container-fluid d-flex flex-column align-items-center justify-content-center'>
+
+            <div className='row'>
+                <h1>Search Tweet for {username}</h1>
+                <button onClick={() => { navigate('/home') }}>
+                    change to home page
+                </button>
             </div>
 
-            <div className='container'>
-                <h1>Search Tweet for {username}</h1>
-                <button onClick={() => {navigate('/home')}}>
-                    change to home page
-                </button>    
+            <div className='row w-50 mt-4 pt-4 mb-4 pt-4'>
+                <input type='text' value={userInput} onChange={handleInputChange} placeholder='search for tweets' className="w-75"/>
+                <button className='btn-primary w-25' onClick={searchButton}>Search</button>
             </div>
-        
-        </>
- 
+            
+            <div className='container'>
+                <div className='card'>
+                    <h5 className='card-title'>Card Title</h5>
+                    <p className='card-text'>Lorem ipsum dolor</p>
+                    <button className='btn btn-primary'>Button One</button>
+                </div>
+            </div>
+        </div>
     )
 }
 

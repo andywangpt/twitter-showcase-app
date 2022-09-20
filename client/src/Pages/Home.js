@@ -1,10 +1,11 @@
 import React from 'react'
+import twitterLogo from '../Assets/twitter.png'
 
 function Home() {
   return (
     <div className='container'>
       
-
+      <img src={twitterLogo} alt='twitter logo' />
 
       <p className='lead'>
           This web app utilizes the Twitter API to fetch user tweets and present them in different ways. 

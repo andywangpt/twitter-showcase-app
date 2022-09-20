@@ -1,3 +1,5 @@
+
+/*
 body {
   background-color: yellow;
   margin-top: 10px;
@@ -5,11 +7,10 @@ body {
   background-image: url("igor-karimov-2.jpeg");
   background-size:cover;
   background-position: 90%;
-  backface-visibility:visible;
 }
 
 
-.container { /* main container */
+.container { /* main container 
   display: flex;
   width: 20%;
   margin:auto;
@@ -23,12 +24,12 @@ body {
   color: black;
 }
 
-nav { /*nav container*/
+nav { /*nav container
   padding: 10px;
   background-color: #277BC0;
 }
 
-nav a { /* nav bar links */
+nav a { /* nav bar links
   color: #FFF4CF;
   text-decoration:none;
   text-transform: uppercase;
@@ -70,7 +71,7 @@ p {
   margin-left: 25%;
   
 }
-*/
+
 .userInput {
   width:500px;
 }
