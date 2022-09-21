@@ -36,7 +36,7 @@ function SearchTweet() {
                 <button className='btn-dark col-3' onClick={searchButton}>Search By User</button>
             </div>
             
-                <div className='card container w-50 mt-4'>
+                <div className='card w-50 mt-4'>
                     <div className= 'card-header'>
                         <div className='row'>
                             <div className='col-1'>
@@ -46,21 +46,17 @@ function SearchTweet() {
                             <div className='col'>
                                 <div className='row h-25'>
                                     <h5 className=' col-3'> UserName 1 </h5>
-                                    <img src={icons8love48} width='50' className='col-8 align-items-right'  alt='like'/>
+                                    <img src={icons8love48} width='50' className='col-8 align-items-right w-25'  alt='like'/>
                                   
                                 </div>
                                 <div className='row h-25'>
                                     <div className='row'>
                                         <h5 className=' col-3'> @UserName 2 </h5>
-                                        <img src={icons8retweet} className=' col-8 align-items-right' alt='retweet'/>
+                                        <img src={icons8retweet} className='col-8 align-items-right' alt='retweet'/>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
-                        
-                       
-                      
                     </div>
 
                     <p className='card-text'>Lorem ipsum dolor</p>
