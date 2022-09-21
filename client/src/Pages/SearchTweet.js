@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo512 from '../Assets/logo512.png'
+import icons8love48 from '../Assets/icons8love48.png'
+import icons8retweet from '../Assets/icons8retweet.png'
 
 function SearchTweet() {
 
@@ -28,17 +31,42 @@ function SearchTweet() {
             </div>
 
             <div className='row w-50 mt-4 pt-4 mb-4 pt-4'>
-                <input type='text' value={userInput} onChange={handleInputChange} placeholder='search for tweets' className="w-75"/>
-                <button className='btn-primary w-25' onClick={searchButton}>Search</button>
+                <input className="col-6" type='text' value={userInput} onChange={handleInputChange} placeholder='search for tweets' />
+                <button className='btn-dark col-3' onClick={searchButton}>Search By User</button>
+                <button className='btn-dark col-3' onClick={searchButton}>Search By User</button>
             </div>
             
-            <div className='container'>
-                <div className='card'>
-                    <h5 className='card-title'>Card Title</h5>
+                <div className='card container w-50 mt-4'>
+                    <div className= 'card-header'>
+                        <div className='row'>
+                            <div className='col-1'>
+                                <img src={logo512} width='50' alt='logo'/>
+                            </div>
+
+                            <div className='col'>
+                                <div className='row h-25'>
+                                    <h5 className=' col-3'> UserName 1 </h5>
+                                    <img src={icons8love48} width='50' className='col-8 align-items-right'  alt='like'/>
+                                  
+                                </div>
+                                <div className='row h-25'>
+                                    <div className='row'>
+                                        <h5 className=' col-3'> @UserName 2 </h5>
+                                        <img src={icons8retweet} className=' col-8 align-items-right' alt='retweet'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        
+                       
+                      
+                    </div>
+
                     <p className='card-text'>Lorem ipsum dolor</p>
-                    <button className='btn btn-primary'>Button One</button>
+                    <button className='btn btn-dark'>Button One</button>
                 </div>
-            </div>
+   
         </div>
     )
 }

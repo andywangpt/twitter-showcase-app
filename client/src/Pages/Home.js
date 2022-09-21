@@ -3,9 +3,9 @@ import twitterLogo from '../Assets/twitter.png'
 
 function Home() {
   return (
-    <div className='container'>
+    <div className='container-lg p-3 my-3 bg-dark text-white align-items-center'>
       
-      <img src={twitterLogo} alt='twitter logo' />
+      <img className='twitter-logo mx-auto d-block img-fluid max-width:50% ' src={twitterLogo} alt='twitter logo' />
 
       <p className='lead'>
           This web app utilizes the Twitter API to fetch user tweets and present them in different ways. 

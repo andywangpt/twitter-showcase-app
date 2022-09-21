@@ -11,14 +11,14 @@ function NavBar() {
         
           <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className='navbar-nav ml-auto'>
-              <li className='navbar-item'>
-                <Link className='nav-link' to='/' > Home   </Link>
+              <li className='navbar-item gap-3'>
+                <Link className='nav-link' to='/' ><h2>home</h2>   </Link>
               </li>
               <li className='navbar-item'>
-                <Link className='nav-link' to='/searchtweet' >Search Tweet</Link>
+                <Link className='nav-link' to='/searchtweet' ><h2>search tweets</h2></Link>
               </li>
               <li className='navbar-item'>
-                <Link className='nav-link' to='randomtweet' >Random Tweet</Link>
+                <Link className='nav-link' to='randomtweet' ><h2>random tweets</h2></Link>
               </li>
           </ul>
         </div>
