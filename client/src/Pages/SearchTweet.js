@@ -57,7 +57,7 @@ function SearchTweet() {
         id="card-container"
         className="card w-50 m-3 p-1 border-light rounded-lg"
       >
-        <div id="card-header" className="card-title row d-flex flex-wrap">
+        <div id="card-header" className="card-title row d-flex flex-wrap mb-0">
           <div className="col-sm-2">
             <img src={logo512} className="logo" alt="logo" />
           </div>
@@ -68,7 +68,7 @@ function SearchTweet() {
             id="user-names"
           >
             <div>spiderman</div>
-            <div> @spiderman</div>
+            <div>@spiderman</div>
           </div>
 
           <div id="icon-container" className="col-sm-4 align-items-end">
@@ -83,8 +83,8 @@ function SearchTweet() {
           </div>
         </div>
 
-        <div className="card-body">
-          <div id="tweet-container" className="row align-items-baseline">
+        <div className="card-body m-0 px-3 py-1 align-self-baseline">
+          <div id="tweet-container" className="row">
             Tweet placeholder
           </div>
           <div id="media-container" className="row">
