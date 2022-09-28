@@ -1,9 +1,24 @@
+#icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .icon {
-    width: 42px;
-    height: 42px;
-    justify-content: flex-end;
+    width: 50px;
+    height: 30px;
 }
 
 .logo {
     width: 75px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-elements {
+    max-width: fit-content;
 }
