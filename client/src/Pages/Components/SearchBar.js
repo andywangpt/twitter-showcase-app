@@ -19,26 +19,26 @@ function SearchBar() {
 
 	return (
 		<>
-			<h2 className="m-3 p-3 display-4 bg-dark text-light rounded-3">
+			<h2 className="m-3 p-3 w-75 display-4 bg-dark text-light rounded-3 align-self-center">
 				Search Tweets by User or Content
 			</h2>
 
-			<div id="search-bar" className="row w-50 m-1 pt-1">
+			<div id="search-bar" className="row w-75 m-1 pt-1">
 				<input
-					className="col-6 border-light rounded-3"
+					className="col-8 border-light rounded-3"
 					type="text"
 					value={userInput}
 					onChange={handleInputChange}
 					placeholder="Search for Tweets"
 				/>
 				<button
-					className="btn-dark col-3 border-light rounded-3"
+					className="btn-dark col-2 border-light rounded-3"
 					onClick={searchButton}
 				>
 					Search By User
 				</button>
 				<button
-					className="btn-dark col-3 border-light rounded-3"
+					className="btn-dark col-2 border-light rounded-3"
 					onClick={searchButton}
 				>
 					Search By User

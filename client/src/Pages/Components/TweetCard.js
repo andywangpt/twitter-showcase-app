@@ -8,7 +8,7 @@ function TweetCard() {
 		<>
 			<div
 				id="card-container"
-				className="card w-50 m-3 p-1 border-light rounded-lg"
+				className="card w-75 m-3 p-1 border-light rounded-lg"
 			>
 				<div
 					id="card-header"
@@ -22,16 +22,15 @@ function TweetCard() {
 						/>
 					</div>
 
-					{/* USER NAME  ----------------------------------------------------*/}
 					<div
-						className="col-sm-5 ps-2 pe-3 ms-1 me-4 d-flex align-items-flex-start flex-nowrap"
 						id="user-names"
+						className="col-sm-5 ps-2 pe-3 ms-1 me-4 d-flex align-items-flex-start flex-nowrap"
 					>
 						<div>spiderman</div>
 						<div>@spiderman</div>
 					</div>
 
-					<div id="icon-container" className="col-sm-4 pl-5 ms-4 g-0">
+					<div id="icon-container" className="col-sm-5 pl-5 ms-4 g-0">
 						<div className="row">
 							#likes
 							<img src={icons8love48} className="icon" alt="like" />

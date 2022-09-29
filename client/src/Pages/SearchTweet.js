@@ -1,27 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "../Pages/SearchTweet.css";
 import TweetCard from "./Components/TweetCard";
 import SearchBar from "./Components/SearchBar";
 
 function SearchTweet() {
-	//let navigate = useNavigate();
-	//let { username } = useParams;
-
-	const [userInput, setUserInput] = useState("");
-	//const [searchValue, setSearchValue] = useState('')
-	const handleInputChange = (e) => {
-		setUserInput(e.target.value);
-	};
-
-	function searchButton() {
-		//setSearchValue(userInput)
-	}
-
 	return (
-		<div className="container-fluid d-flex flex-column align-items-center justify-content-center bg-secondary">
+		<div className="container-fluid d-flex flex-column align-items-center justify-content-center bg-secondary pb-5">
 			<SearchBar />
+			<TweetCard />
+			<TweetCard />
+			<TweetCard />
 			<TweetCard />
 		</div>
 	);

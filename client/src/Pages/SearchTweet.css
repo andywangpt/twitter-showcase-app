@@ -1,32 +1,32 @@
 
 #user-names{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;            
-    justify-content: flex-start;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;            
+   justify-content: flex-start;
 }
 
 #icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
 }
 
 .icon {
-    width: 50px;
-    height: 28px;
+   width: 50px;
+   height: 28px;
 }
 
 .logo {
-    width: 65px;
+   width: 65px;
 }   
 
 .search-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .time-elements {
-    max-width: fit-content;
+   max-width: fit-content;
 }
