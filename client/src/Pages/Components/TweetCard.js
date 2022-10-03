@@ -30,7 +30,7 @@ function TweetCard() {
 						<div>@spiderman</div>
 					</div>
 
-					<div id="icon-container" className="col-sm-5 pl-5 ms-4 g-0">
+					<div id="icon-container" className="col-sm-5 pl-5 ms-5 g-0">
 						<div className="row">
 							#likes
 							<img src={icons8love48} className="icon" alt="like" />

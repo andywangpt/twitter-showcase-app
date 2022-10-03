@@ -19,9 +19,9 @@ function SearchBar() {
 
 	return (
 		<>
-			<h2 className="m-3 p-3 w-75 display-4 bg-dark text-light rounded-3 align-self-center">
+			<h4 className="m-3 p-3 w-75 display-5 bg-dark text-light rounded-3 align-self-center">
 				Search Tweets by User or Content
-			</h2>
+			</h4>
 
 			<div id="search-bar" className="row w-75 m-1 pt-1">
 				<input
@@ -41,7 +41,7 @@ function SearchBar() {
 					className="btn-dark col-2 border-light rounded-3"
 					onClick={searchButton}
 				>
-					Search By User
+					Search By Content
 				</button>
 			</div>
 		</>
@@ -49,3 +49,13 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
+/*
+git init (only do once)
+
+git add .
+git status
+git commit -m "commit msg"
+git push origin main
+
+*/
