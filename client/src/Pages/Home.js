@@ -13,18 +13,18 @@ function Home() {
 				>
 					<div className="container-fluid d-flex bg-secondary pb-5">
 						<div className="container-lg p-3 my-3 bg-dark text-white align-items-center">
-							<h1 className="row justify-content-center">
-								FPS Game Developer Tweet Tracker
+							<h1 className="row justify-content-center bg-secondary rounded mw-fit-content mb-4">
+								The Latest News in FPS Gaming
 							</h1>
 							<img
 								className="twitter-logo mx-auto d-block img-fluid max-width:50% "
-								src={twitterLogo}
+								src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
 								alt="twitter logo"
 							/>
-							<p className="lead">
+							<p className="lead m-auto p-5">
 								Use the search feature to stay up to date with the latest game
-								development updates from from some of the most popular FPS
-								gaming studios.
+								development updates from some of the most popular FPS gaming
+								studios.
 								<br></br>
 								<br></br>
 								You can also select from my recommended list of Twitter users to
