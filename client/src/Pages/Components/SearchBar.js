@@ -49,13 +49,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-
-/*
-git init (only do once)
-
-git add .
-git status
-git commit -m "commit msg"
-git push origin main
-
-*/
