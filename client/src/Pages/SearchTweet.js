@@ -9,7 +9,7 @@ function SearchTweet() {
 		<>
          <div className="bg container-sm">
             
-				<div className="main-container container d-flex mw-75 mx-5 mt-4 p-2 flex-column align-items-center rounded-5">
+				<div className="search-container container d-flex mw-75 mx-5 mt-4 p-2 flex-column align-items-center rounded-5">
 					<SearchBar />
 					<TweetCard />
 					<TweetCard />
