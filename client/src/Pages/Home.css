@@ -1,0 +1,60 @@
+html,
+body {
+   background-image: url(../Assets/bg-computer51.jpg);
+}
+
+.icon-accuracy {
+   max-width: 3%;
+   max-height: 2%;
+}
+
+.navbar {
+   background-color: rgba(0, 0, 0, 0.9);
+}
+
+.home-container {
+   background-color: rgba(255, 255, 255, 0.9);
+}
+
+.img-wrapper {
+   position: relative;
+}
+
+.img-responsive {
+   width: 100%;
+   height: auto;
+}
+
+.img-overlay {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 75%;
+   text-align: center;
+}
+
+.img-overlay:before {
+   content: ' ';
+   display: block;
+   /* adjust 'height' to position overlay content vertically */
+   height: 70%;
+
+}
+
+.img-overlay-2 {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 75%;
+   text-align: center;
+}
+
+.img-overlay-2:before {
+   content: ' ';
+   display: block;
+   /* adjust 'height' to position overlay content vertically */
+   height: 80%;
+
+}

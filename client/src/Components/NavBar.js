@@ -6,16 +6,16 @@ import accuracyIcon from "../Assets/icons8-accuracy-90.png";
 
 function NavBar() {
 	return (
-		<nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-			<a class="navbar-brand row" href="#">
+		<nav className="navbar navbar-dark navbar-expand-lg py-0">
+			<a class="navbar-brand row mr-1" href="#">
 				<img
 					src={accuracyIcon}
 					width="50"
 					height="50"
-					className="d-inline-block align-center ml-2 col-sm pr-0"
+					className="d-inline-block align-center ml-2 mr-0 col-sm pr-0"
 					alt="aim logo"
 				/>
-				<h3 className="col align-self-center font-weight-bolder">FPS Game Dev Tweet Tracker</h3>
+            {/*<h3 className="col align-self-center font-weight-bolder">FPS Game Dev Tweet Tracker</h3>*/}
 			</a>
 
 			<button
@@ -27,18 +27,18 @@ function NavBar() {
 			</button>
 
 			<div className="collapse navbar-collapse" id="navbarCollapse">
-				<ul className="navbar-nav ml-auto">
-					<li className="navbar-item">
+				<ul className="navbar-nav mr-auto text-uppercase">
+					<li className="navbar-item m-1">
 						<Link className="nav-link" to="/">
 							<h3>Home</h3>
 						</Link>
 					</li>
-					<li className="navbar-item">
+					<li className="navbar-item m-1">
 						<Link className="nav-link" to="/searchtweet">
 							<h3>Search Tweets</h3>
 						</Link>
 					</li>
-					<li className="navbar-item">
+					<li className="navbar-item m-1">
 						<Link className="nav-link" to="randomtweet">
 							<h3>Random Tweets</h3>
 						</Link>
