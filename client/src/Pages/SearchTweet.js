@@ -3,37 +3,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Pages/SearchTweet.css";
 import TweetCard from "./Components/TweetCard";
 import SearchBar from "./Components/SearchBar";
+import SearchFooter from "./Components/SearchFooter";
 
 function SearchTweet() {
 	return (
 		<>
-         <div className="bg container-sm">
-            
-				<div className="search-container container d-flex mw-75 mx-5 mt-4 p-2 flex-column align-items-center rounded-5">
-					<SearchBar />
-					<TweetCard />
-					<TweetCard />
-					<TweetCard />
-					<TweetCard />
-            </div>
-            
-				<div className="container footer font-weight-lighter mt-5">
-					<a target="_blank" href="https://icons8.com/icon/Mjt9Tkm04cgv/love">
-						Love
-					</a>{" "}
-					icon by{" "}
-					<a target="_blank" href="https://icons8.com">
-						Icons8
-					</a>
-					<br></br>
-					<a target="_blank" href="https://icons8.com/icon/20733/retweet">
-						Retweet
-					</a>{" "}
-					icon by{" "}
-					<a target="_blank" href="https://icons8.com">
-						Icons8
-					</a>
+			<div className="bg container">
+				<div className="container-fluid d-flex w-75">
+					<div className="search-container container d-flex mw-100 mt-4 p-3 flex-column align-items-center rounded-5">
+						<SearchBar />
+						<TweetCard />
+						<TweetCard />
+						<TweetCard />
+						<TweetCard />
+					</div>
 				</div>
+				<SearchFooter />
 			</div>
 		</>
 	);

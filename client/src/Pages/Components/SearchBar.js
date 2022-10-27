@@ -19,11 +19,11 @@ function SearchBar() {
 
 	return (
 		<>
-			<h4 className="row m-1 p-2 w-75 display-5 font-weight-bold bg-dark text-white rounded-3 justify-content-center">
+			<h4 className="row m-1 p-2 w-100 display-5 font-weight-bold bg-dark text-white rounded-3 justify-content-center">
 				Search Tweets by User or Content
 			</h4>
 
-			<div id="search-bar" className="row w-75 m-1 mb-0 pt-1 pb-0">
+			<div id="search-bar" className="row w-100 m-1 mb-2 pt-1 pb-1">
 				<input
 					className="col-6 border-light rounded-3"
 					type="text"
