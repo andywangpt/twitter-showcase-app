@@ -11,7 +11,8 @@ function TweetCard() {
 	useEffect(() => {
 		fetch("api/tweets")
 			.then((res) => res.json())
-			.then((data) => {
+         .then((data) => {
+            tweetList = data
 				setTweets(data);
 				console.log("success");
 				console.log(tweetList[0].text);
