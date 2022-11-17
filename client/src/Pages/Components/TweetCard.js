@@ -5,16 +5,16 @@ import icons8love48 from "./icons8love48.png";
 import icons8retweet from "./icons8retweet.png";
 
 function TweetCard() {
-	const [tweets, setTweets] = useState([]);
-	//console.log(tweets);
+   const [tweets, setTweets] = useState([]);
+   let tweetList = []
 
 	useEffect(() => {
 		fetch("api/tweets")
 			.then((res) => res.json())
 			.then((data) => {
-				//console.log(data[0].text);
 				setTweets(data);
 				console.log("success");
+				console.log(tweetList[0].text);
 			});
 	}, []);
 
@@ -46,7 +46,7 @@ function TweetCard() {
 					</div>
 				</div>
 
-				<div className="col-md-12">{tweets[0].text}</div>
+            <div className="col-md-12">{tweets[0].text}</div>
 
 				<div id="media-container" className="col-md-12">
 					Media
@@ -64,8 +64,6 @@ function TweetCard() {
 
 /*
 {tweets[0].text}
-
-
 
 */
 
