@@ -2,28 +2,14 @@ const express = require("express");
 const path = require("path");
 const axios = require("axios");
 const app = express();
-let singleTweet = "";
-let data = "";
+const port = 5001;
 const bearToken =
 	"AAAAAAAAAAAAAAAAAAAAAAWphgEAAAAAHyXA3T%2FB%2B9dS%2FZAtP6TG9n2%2B1Mo%3D5JR8gu58DzqXiA7IapPAuTM7lpwFs0b04d6fblMg6GldoHF08m";
+let arrayOfTweets = "";
 
 app.use("/", express.static(path.join(__dirname, "client/build")));
 
-//app.get("/api/name", (req, res) => {
-//	res.json({ name: "andy" });
-//	res.send("hello from rooot");
-//	console.log("hello");
-//});
-
 app.get("/api/tweets", function (req, res) {
-	const callOptions = {
-		method: "POST",
-		url: "https://api.twitter.com/1.1/search/tweets.json?q=elon&result_type=popular",
-		headers: {
-			Authorization: `Bearer ${bearToken}`,
-		},
-	};
-
 	axios
 		.get(
 			"https://api.twitter.com/1.1/search/tweets.json?q=elon&result_type=popular",
@@ -34,28 +20,17 @@ app.get("/api/tweets", function (req, res) {
 			}
 		)
 		.then(function (res) {
-			//handle success
-			const apiData = res.data.statuses[1];
-			console.log(apiData["text"]);
-			singleTweet = apiData["text"];
-         data = apiData;
-
-			//res.send(res);
-		})
-		.catch(function (error) {
-			//handle eror
-			console.log(error);
-			res.send("something went wrong");
+			arrayOfTweets = res.data.statuses;
+			console.log(arrayOfTweets[10].text);  //single test tweet
+			//res.send(arrayOfTweets);  //doesn't work here for some reason
 		})
 		.then(function () {
-			console.log("component ran");
+			res.send(arrayOfTweets);
+		})
+		.catch(function (error) {
+			console.log(error);
+			res.send("something went wrong");
 		});
-	//res.send('')
-	//res.json(data);
-
 });
 
-app.listen(5001);
-
-//"https://api.twitter.com/1.1/search/tweets.json?q=elon&result_type=popular"
-//"https://swapi.dev/api/people/1"
+app.listen(port);
