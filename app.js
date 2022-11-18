@@ -12,7 +12,7 @@ app.use("/", express.static(path.join(__dirname, "client/build")));
 app.get("/api/tweets", function (req, res) {
 	axios
 		.get(
-			"https://api.twitter.com/1.1/search/tweets.json?q=elon&result_type=popular",
+			"https://api.twitter.com/1.1/search/tweets.json?q=fps_gaming",
 			{
 				headers: {
 					Authorization: `Bearer ${bearToken}`,
@@ -21,7 +21,7 @@ app.get("/api/tweets", function (req, res) {
 		)
 		.then(function (res) {
 			arrayOfTweets = res.data.statuses;
-			console.log(arrayOfTweets[10].text);  //single test tweet
+			console.log(arrayOfTweets[10].text); //single test tweet
 			//res.send(arrayOfTweets);  //doesn't work here for some reason
 		})
 		.then(function () {
