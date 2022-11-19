@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import icons8love48 from "./icons8love48.png";
 import icons8retweet from "./icons8retweet.png";
 
+let tweetNumber = 0;
+let tweetMedia = [];
+
 function TweetCard() {
 	const [tweets, setTweets] = useState([]);
 
@@ -11,12 +14,17 @@ function TweetCard() {
 			.then((res) => res.json())
 			.then((data) => {
 				setTweets(data);
-				console.log("success");
+				tweetNumber++;
 			});
 	}, []);
 
 	if (tweets.length === 0) {
 		return <></>;
+	}
+
+	if (tweets[tweetNumber].extended_entities) {
+		tweetMedia[tweetNumber] =
+			tweets[tweetNumber].extended_entities.media[0].media_url || "";
 	}
 
 	return (
@@ -26,8 +34,8 @@ function TweetCard() {
 					<div id="user-names" className="float-left w-100">
 						<div>
 							<img
-								src={tweets[0].user.profile_image_url}
-								className="logo float-start"
+								src={tweets[tweetNumber].user.profile_image_url}
+								className="logo float-start rounded-circle mt-2"
 								alt="logo"
 							/>
 							<div className="float-start ml-3 mt-2">
@@ -40,28 +48,32 @@ function TweetCard() {
 
 				<div className="col-md-6">
 					<div className="w-100 h-100">
-						<div className="float-end" style={{ clear: "both" }}>
-							<span className="">#{tweets[0].favorite_count}</span>
+						<div className="float-end mt-2" style={{ clear: "both" }}>
+							<span className="">#{tweets[tweetNumber].favorite_count}</span>
 							<img src={icons8love48} className="icon" alt="like" />
 						</div>
 						<div className="float-end" style={{ clear: "both" }}>
-							<span>#{tweets[0].retweet_count}</span>
+							<span>#{tweets[tweetNumber].retweet_count}</span>
 							<img src={icons8retweet} className="icon" alt="retweet" />
 						</div>
 					</div>
 				</div>
 
-				<div className="col-md-12 m-2">{tweets[0].text}</div>
+				<div className="col-md-12 m-2">{tweets[tweetNumber].text}</div>
 
 				<div id="media-container" className="col-md-12 m-2">
-					Media
-					<img></img>
+					<img className="col" src={tweetMedia[tweetNumber]}></img>
+				</div>
+				<div className="row">
+					<div className="time-elements col">
+						{tweets[tweetNumber].user.location}
+					</div>
 				</div>
 
 				<div className="card-footer text-muted row px-3 py-2">
-					<div className="time-elements col-3">{tweets[0].created_at}</div>・
-					<div className="time-elements col-2">10:10AM</div>・
-					<div className="time-elements col-3">{tweets[0].user.location}</div>
+					<div className="time-elements col">
+						{tweets[tweetNumber].created_at}
+					</div>
 				</div>
 			</div>
 		</>
