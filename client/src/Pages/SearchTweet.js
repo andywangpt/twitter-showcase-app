@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 //import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Pages/SearchTweet.css";
@@ -7,8 +7,24 @@ import SearchBar from "./Components/SearchBar";
 import SearchFooter from "./Components/SearchFooter";
 
 function SearchTweet() {
-   const [userInput, setUserInput] = useState('')
-   const [searchInput, setSearchInput] = useState('')
+	const [userInput, setUserInput] = useState("");
+	const [searchInput, setSearchInput] = useState("");
+
+	const [tweets, setTweets] = useState([]);
+	const [tweetNumber, setTweetNumber] = useState([0]);
+	//let tweetNumber = 0;
+
+	useEffect(() => {
+		fetch("api/tweets")
+			.then((res) => res.json())
+			.then((data) => {
+				setTweets(data);
+			});
+	}, []);
+
+	if (tweets.length === 0) {
+		return <></>;
+	}
 
 	return (
 		<>
@@ -16,11 +32,8 @@ function SearchTweet() {
 				<div className="container-fluid d-flex w-75">
 					<div className="search-container container d-flex mw-100 mt-4 p-3 flex-column align-items-center rounded-5">
 						<SearchBar />
-						<TweetCard />
-						<TweetCard />
-						<TweetCard />
-						<TweetCard />
-						<TweetCard />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+
 					</div>
 				</div>
 				<SearchFooter />

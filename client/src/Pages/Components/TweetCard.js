@@ -3,24 +3,10 @@ import React, { useState, useEffect } from "react";
 import icons8love48 from "./icons8love48.png";
 import icons8retweet from "./icons8retweet.png";
 
-let tweetNumber = 0;
 let tweetMedia = [];
 
-function TweetCard() {
-	const [tweets, setTweets] = useState([]);
-
-	useEffect(() => {
-		fetch("api/tweets")
-			.then((res) => res.json())
-			.then((data) => {
-				setTweets(data);
-				tweetNumber++;
-			});
-	}, []);
-
-	if (tweets.length === 0) {
-		return <></>;
-	}
+function TweetCard({ tweets, tweetNumber }) {
+	//tweetNumber++
 
 	if (tweets[tweetNumber].extended_entities) {
 		tweetMedia[tweetNumber] =
@@ -79,10 +65,5 @@ function TweetCard() {
 		</>
 	);
 }
-
-/*
-{tweets[0].text}
-{tweets[0].entities.media.media_url}
-*/
 
 export default TweetCard;

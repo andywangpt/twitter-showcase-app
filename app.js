@@ -18,7 +18,7 @@ app.use("/", express.static(path.join(__dirname, "client/build"))); //still don'
 
 app.get("/api/tweets", (req, res) => {
 	axios
-		.get(`${tweetSearchUrl}${searchTerm}`, {
+		.get(`${tweetSearchUrl} ${searchTerm}`, {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
 			},
@@ -39,14 +39,14 @@ app.get("/api/tweets", (req, res) => {
 
 app.get("/api/users", (req, res) => {
 	axios
-		.get(`${userSearchUrl}${searchTerm}`, {
+		.get(`${userSearchUrl} ${searchTerm}`, {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
 			},
 		})
 		.then((res) => {
 			arrayOfUsers = res.data;
-			//res.send(arrayOfUsers) //doesn't work here
+			//res.send(arrayOfUsers) //doesn't work here either
 			console.log(res.data[0].name); //single test user name
 		})
 		.then(() => {
@@ -59,3 +59,7 @@ app.get("/api/users", (req, res) => {
 });
 
 app.listen(port);
+
+// getting user data need to send users to front end
+// sending user search term to the front end
+// 
