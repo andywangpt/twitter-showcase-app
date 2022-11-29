@@ -15,9 +15,8 @@ function SearchBar() {
 	};
 
 	useEffect(() => {
-		axios.post("/ api / users / search", {
-				firstName: "Fred",
-				lastName: "Flintstone",
+		axios.post("/ api / users", {
+         searchTerm: { searchValue },
 			})
 			.then(function (response) {
 				console.log(response);
