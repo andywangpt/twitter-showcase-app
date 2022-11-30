@@ -15,26 +15,29 @@ function SearchBar() {
 	};
 
 	useEffect(() => {
-		axios.post("/ api / users", {
-         searchTerm: { searchValue },
-			})
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		const reactData = [
+			{ id: 1, name: " Tom" },
+			{ id: 2, name: " Sarah" },
+		];
+		const url = "localhost:5001/api/users/register";
+		if (searchValue) {
+			let sendData = () => {
+				axios
+					.post(url, reactData)
+					.then((res) => console.log("Data send"))
+					.catch((err) => console.log(err.data));
+			};
+		}
 	}, [searchValue]);
 
-	function searchUserButton() {
+	function searchUserButton(e) {
+		e.preventDefault();
 		setSearchValue(userInput);
-		console.log(searchValue);
 	}
 
-	function searchContentButton() {
+	function searchContentButton(e) {
+		e.preventDefault();
 		setSearchValue(userInput);
-		//send to server
-		//server then term to search
 	}
 
 	return (
