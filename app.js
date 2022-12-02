@@ -43,7 +43,6 @@ app.get("/api/tweets", (req, res) => {
 			});
 	} else {
 		res.send("hello", searchValue);
-		
 	}
 });
 

@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
-
-function SearchBar({ setSearchValue, setSearchType }) {
-	//let navigate = useNavigate();
-	//let { username } = useParams;
-
+function SearchBar({ searchValue, setSearchValue, setSearchType, searchType }) {
 	const [userInput, setUserInput] = useState("");
+
+	const url = "/api/tweets";
+	const params = {
+		search_value: searchValue,
+		search_type: searchType,
+	};
+
+	useEffect(() => {
+		if (searchValue) {
+			//axios.get(
+			//	`${url}?search_value=${searchValue}&search_type=${searchType}`
+			//		.then((res) => console.log("data send"))
+			//		.catch((err) => console.log("didn't send"))
+			//);
+
+			axios.get(
+				url,
+				{ params }
+					.then((res) => console.log("data send"))
+					.catch((err) => console.log("didn't send"))
+			);
+		}
+	}, [searchValue, searchType]);
 
 	const handleInputChange = (e) => {
 		setUserInput(e.target.value);

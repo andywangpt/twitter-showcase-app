@@ -24,7 +24,7 @@ function SearchTweet() {
 			params: {
 				search_value: searchValue,
 				search_type: searchType,
-			}
+			},
 		})
 			.then((res) => res.json())
 			.then((data) => {
@@ -45,6 +45,7 @@ function SearchTweet() {
 							searchValue={searchValue}
 							setSearchValue={setSearchValue}
 							setSearchType={setSearchType}
+							searchType={searchType}
 						/>
 						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
 					</div>
