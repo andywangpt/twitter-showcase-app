@@ -1,43 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-const axios = require("axios").default;
 
-function SearchBar() {
+
+function SearchBar({ setSearchValue, setSearchType }) {
 	//let navigate = useNavigate();
 	//let { username } = useParams;
 
 	const [userInput, setUserInput] = useState("");
-	const [searchValue, setSearchValue] = useState("");
 
 	const handleInputChange = (e) => {
 		setUserInput(e.target.value);
-		console.log(userInput);
 	};
-
-	useEffect(() => {
-		const reactData = [
-			{ id: 1, name: " Tom" },
-			{ id: 2, name: " Sarah" },
-		];
-		const url = "localhost:5001/api/users/register";
-		if (searchValue) {
-			let sendData = () => {
-				axios
-					.post(url, reactData)
-					.then((res) => console.log("Data send"))
-					.catch((err) => console.log(err.data));
-			};
-		}
-	}, [searchValue]);
 
 	function searchUserButton(e) {
 		e.preventDefault();
 		setSearchValue(userInput);
+		setSearchType("user");
 	}
 
 	function searchContentButton(e) {
 		e.preventDefault();
 		setSearchValue(userInput);
+		setSearchType("content");
 	}
 
 	return (

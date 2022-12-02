@@ -7,20 +7,30 @@ import SearchBar from "./Components/SearchBar";
 import SearchFooter from "./Components/SearchFooter";
 
 function SearchTweet() {
-	const [userInput, setUserInput] = useState("");
-	const [searchInput, setSearchInput] = useState("");
+	//const [userInput, setUserInput] = useState("");
+	//const [searchInput, setSearchInput] = useState("");
 
 	const [tweets, setTweets] = useState([]);
 	const [tweetNumber, setTweetNumber] = useState([0]);
+
+	const [searchValue, setSearchValue] = useState("");
+	const [searchType, setSearchType] = useState("");
 	//let tweetNumber = 0;
 
+	//axios.get("/convertedAmount?primaryCurrency=USD&secondaryCurrency=GBP&primaryCurrencyAmount=1")
+
 	useEffect(() => {
-		fetch("api/tweets")
+		fetch("api/tweets", {
+			params: {
+				search_value: searchValue,
+				search_type: searchType,
+			}
+		})
 			.then((res) => res.json())
 			.then((data) => {
 				setTweets(data);
 			});
-	}, []);
+	}, [searchValue, searchType]);
 
 	if (tweets.length === 0) {
 		return <></>;
@@ -31,9 +41,12 @@ function SearchTweet() {
 			<div className="bg container">
 				<div className="container-fluid d-flex w-75">
 					<div className="search-container container d-flex mw-100 mt-4 p-3 flex-column align-items-center rounded-5">
-						<SearchBar />
+						<SearchBar
+							searchValue={searchValue}
+							setSearchValue={setSearchValue}
+							setSearchType={setSearchType}
+						/>
 						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-
 					</div>
 				</div>
 				<SearchFooter />

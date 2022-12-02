@@ -9,34 +9,45 @@ const BEARER_TOKEN =
 
 const tweetSearchUrl = "https://api.twitter.com/1.1/search/tweets.json?q=";
 const userSearchUrl = "https://api.twitter.com/1.1/users/search.json?q=";
+const timeLineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 const searchTerm = "bitcoin";
 
 let arrayOfTweets = [];
 let arrayOfUsers = [];
 
-app.use("/", express.static(path.join(__dirname, "client/build"))); //still don't understand this line
+app.use("/", express.static(path.join(__dirname, "client/build"))); //still don't understand express.static
 
 app.get("/api/tweets", (req, res) => {
-	axios
-		.get(`${tweetSearchUrl} ${searchTerm}`, {
-			headers: {
-				Authorization: `${BEARER_TOKEN}`,
-			},
-		})
-		.then((res) => {
-			arrayOfTweets = res.data.statuses;
-			console.log(arrayOfTweets[0].text); //single test tweet
-			//res.send(arrayOfTweets);  //doesn't work here for some reason
-		})
-		.then(() => {
-			res.send(arrayOfTweets);
-		})
-		.catch((error) => {
-			console.log(error);
-			res.send("something went wrong");
-		});
+	const searchValue = req.query.search_value;
+	const searchType = "content"; //req.query.search_type;
+
+	if (searchType === "content") {
+		axios
+			.get(`${tweetSearchUrl} ${searchValue}`, {
+				headers: {
+					Authorization: `${BEARER_TOKEN}`,
+				},
+			})
+			.then((res) => {
+				arrayOfTweets = res.data.statuses;
+				console.log(req.query);
+				console.log("line 33", searchValue);
+				//res.send(arrayOfTweets);  //doesn't work here for some reason
+			})
+			.then(() => {
+				res.send(arrayOfTweets);
+			})
+			.catch((error) => {
+				console.log(error);
+				res.send("something went wrong");
+			});
+	} else {
+		res.send("hello", searchValue);
+		
+	}
 });
 
+/*
 app.get("/api/users", (req, res) => {
 	axios
 		.get(`${userSearchUrl} ${searchTerm}`, {
@@ -57,9 +68,10 @@ app.get("/api/users", (req, res) => {
 			console.log(error);
 		});
 });
+*/
 
 app.listen(port);
 
 // getting user data need to send users to front end
 // sending user search term to the front end
-// 
+//
