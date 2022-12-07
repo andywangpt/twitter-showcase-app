@@ -13,20 +13,12 @@ function SearchBar({ searchValue, setSearchValue, setSearchType, searchType }) {
 
 	useEffect(() => {
 		if (searchValue) {
-			//axios.get(
-			//	`${url}?search_value=${searchValue}&search_type=${searchType}`
-			//		.then((res) => console.log("data send"))
-			//		.catch((err) => console.log("didn't send"))
-			//);
-
-			axios.get(
-				url,
-				{ params }
-					.then((res) => console.log("data send"))
-					.catch((err) => console.log("didn't send"))
-			);
+			axios
+				.get(url, { params })
+				.then((res) => console.log("Data Sent - SearchBar.js Line 24"))
+				.catch((err) => console.log("didn't send - SearchBar.js Line 25"));
 		}
-	}, [searchValue, searchType]);
+	}, [params]);
 
 	const handleInputChange = (e) => {
 		setUserInput(e.target.value);

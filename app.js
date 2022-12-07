@@ -18,20 +18,31 @@ let arrayOfUsers = [];
 app.use("/", express.static(path.join(__dirname, "client/build"))); //still don't understand express.static
 
 app.get("/api/tweets", (req, res) => {
-	const searchValue = req.query.search_value;
-	const searchType = "content"; //req.query.search_type;
 
-	if (searchType === "content") {
+	const dummyData = "content";
+	const searchValue = req.query.search_value;
+	const searchType = req.query.search_type; //req.query.search_type;
+
+   const config = {
+			headers: {
+				Authorization: `${BEARER_TOKEN}`,
+			},
+			params: {
+				count: 100,
+				screen_name: searchTerm,
+			},
+		};
+
+	if (dummyData === "content") {
 		axios
-			.get(`${tweetSearchUrl} ${searchValue}`, {
-				headers: {
-					Authorization: `${BEARER_TOKEN}`,
-				},
-			})
+			.get(
+				"https://api.twitter.com/1.1/statuses/user_timeline.json", config
+			)
+			//axios
+			//.get(timeLineUrl, {params: { screen_name: 'twitterapi' }})
 			.then((res) => {
-				arrayOfTweets = res.data.statuses;
-				console.log(req.query);
-				console.log("line 33", searchValue);
+				arrayOfTweets = res.data;
+				//console.log(res.data);
 				//res.send(arrayOfTweets);  //doesn't work here for some reason
 			})
 			.then(() => {
@@ -42,7 +53,7 @@ app.get("/api/tweets", (req, res) => {
 				res.send("something went wrong");
 			});
 	} else {
-		res.send("hello", searchValue);
+		res.send("hello");
 	}
 });
 

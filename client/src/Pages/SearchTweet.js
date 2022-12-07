@@ -11,21 +11,14 @@ function SearchTweet() {
 	//const [searchInput, setSearchInput] = useState("");
 
 	const [tweets, setTweets] = useState([]);
-	const [tweetNumber, setTweetNumber] = useState([0]);
+	//const [tweetNumber, setTweetNumber] = useState([0]);
+	let tweetNumber = 0;
 
 	const [searchValue, setSearchValue] = useState("");
 	const [searchType, setSearchType] = useState("");
-	//let tweetNumber = 0;
-
-	//axios.get("/convertedAmount?primaryCurrency=USD&secondaryCurrency=GBP&primaryCurrencyAmount=1")
 
 	useEffect(() => {
-		fetch("api/tweets", {
-			params: {
-				search_value: searchValue,
-				search_type: searchType,
-			},
-		})
+		fetch("api/tweets")
 			.then((res) => res.json())
 			.then((data) => {
 				setTweets(data);
@@ -47,6 +40,13 @@ function SearchTweet() {
 							setSearchType={setSearchType}
 							searchType={searchType}
 						/>
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
+						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
 						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
 					</div>
 				</div>

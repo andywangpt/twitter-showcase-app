@@ -6,7 +6,7 @@ import icons8retweet from "./icons8retweet.png";
 let tweetMedia = [];
 
 function TweetCard({ tweets, tweetNumber }) {
-	//tweetNumber++
+	tweetNumber++;
 
 	if (tweets[tweetNumber].extended_entities) {
 		tweetMedia[tweetNumber] =
