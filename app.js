@@ -7,10 +7,10 @@ const port = 5001;
 const BEARER_TOKEN =
 	"Bearer AAAAAAAAAAAAAAAAAAAAAAWphgEAAAAAHyXA3T%2FB%2B9dS%2FZAtP6TG9n2%2B1Mo%3D5JR8gu58DzqXiA7IapPAuTM7lpwFs0b04d6fblMg6GldoHF08m";
 
-const tweetSearchUrl = "https://api.twitter.com/1.1/search/tweets.json?q=";
-const userSearchUrl = "https://api.twitter.com/1.1/users/search.json?q=";
+const tweetSearchUrl = "https://api.twitter.com/1.1/search/tweets.json?";
+const userSearchUrl = "https://api.twitter.com/1.1/users/search.json?";
 const timeLineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-const searchTerm = "bitcoin";
+const searchTerm = "elonmusk";
 
 let arrayOfTweets = [];
 let arrayOfUsers = [];
@@ -18,28 +18,24 @@ let arrayOfUsers = [];
 app.use("/", express.static(path.join(__dirname, "client/build"))); //still don't understand express.static
 
 app.get("/api/tweets", (req, res) => {
-
-	const dummyData = "content";
+	const dummyData = "user";
 	const searchValue = req.query.search_value;
 	const searchType = req.query.search_type; //req.query.search_type;
+	console.log(searchValue);
 
-   const config = {
+	if (searchType === "user") {
+		const config = {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
 			},
 			params: {
-				count: 100,
+				count: 10,
 				screen_name: searchTerm,
 			},
 		};
 
-	if (dummyData === "content") {
 		axios
-			.get(
-				"https://api.twitter.com/1.1/statuses/user_timeline.json", config
-			)
-			//axios
-			//.get(timeLineUrl, {params: { screen_name: 'twitterapi' }})
+			.get("https://api.twitter.com/1.1/statuses/user_timeline.json", config)
 			.then((res) => {
 				arrayOfTweets = res.data;
 				//console.log(res.data);
@@ -52,8 +48,56 @@ app.get("/api/tweets", (req, res) => {
 				console.log(error);
 				res.send("something went wrong");
 			});
+	} else if (searchType === "content") {
+		const config = {
+			headers: {
+				Authorization: `${BEARER_TOKEN}`,
+			},
+			params: {
+				q: searchTerm,
+				result_type: "popular",
+			},
+		};
+
+		axios
+			.get(tweetSearchUrl, config)
+			.then((res) => {
+				arrayOfTweets = res.data.statuses;
+				//res.send(arrayOfTweets);  //doesn't work here for some reason
+			})
+			.then(() => {
+				res.send(arrayOfTweets);
+			})
+			.catch((error) => {
+				console.log(error);
+				res.send("something went wrong");
+			});
 	} else {
-		res.send("hello");
+		const config = {
+			headers: {
+				Authorization: `${BEARER_TOKEN}`,
+			},
+			params: {
+				q: "fps",
+				result_type: "popular",
+			},
+		};
+		axios
+			.get(tweetSearchUrl, config)
+			//axios
+			//.get(timeLineUrl, {params: { screen_name: 'twitterapi' }})
+			.then((res) => {
+				arrayOfTweets = res.data.statuses;
+				console.log("line: 94", res.data);
+				//res.send(arrayOfTweets);  //doesn't work here for some reason
+			})
+			.then(() => {
+				res.send(arrayOfTweets);
+			})
+			.catch((error) => {
+				console.log(error);
+				res.send("something went wrong");
+			});
 	}
 });
 

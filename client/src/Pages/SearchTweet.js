@@ -22,6 +22,9 @@ function SearchTweet() {
 			.then((res) => res.json())
 			.then((data) => {
 				setTweets(data);
+			})
+			.catch(() => {
+				return <></>;
 			});
 	}, [searchValue, searchType]);
 
@@ -34,20 +37,14 @@ function SearchTweet() {
 			<div className="bg container">
 				<div className="container-fluid d-flex w-75">
 					<div className="search-container container d-flex mw-100 mt-4 p-3 flex-column align-items-center rounded-5">
-						<SearchBar
+                  <SearchBar
+                     tweets={tweets}
+							setTweets={setTweets}
 							searchValue={searchValue}
 							setSearchValue={setSearchValue}
 							setSearchType={setSearchType}
 							searchType={searchType}
 						/>
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
-						<TweetCard tweets={tweets} tweetNumber={tweetNumber} />
 					</div>
 				</div>
 				<SearchFooter />

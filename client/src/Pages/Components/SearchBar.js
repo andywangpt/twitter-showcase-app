@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import TweetCard from "./TweetCard";
 
-function SearchBar({ searchValue, setSearchValue, setSearchType, searchType }) {
+function SearchBar({
+   tweets,
+	setTweets,
+	searchValue,
+	setSearchValue,
+	setSearchType,
+	searchType,
+}) {
 	const [userInput, setUserInput] = useState("");
 
 	const url = "/api/tweets";
@@ -14,8 +22,9 @@ function SearchBar({ searchValue, setSearchValue, setSearchType, searchType }) {
 	useEffect(() => {
 		if (searchValue) {
 			axios
-				.get(url, { params })
-				.then((res) => console.log("Data Sent - SearchBar.js Line 24"))
+            .get(url, { params })
+            .then((res) => console.log("Data Sent - SearchBar.js Line 24"))  
+            .then((data) => {setTweets(data)})
 				.catch((err) => console.log("didn't send - SearchBar.js Line 25"));
 		}
 	}, [params]);
@@ -62,7 +71,11 @@ function SearchBar({ searchValue, setSearchValue, setSearchType, searchType }) {
 				>
 					Search By Content
 				</button>
-			</div>
+         </div>
+         
+         <div>
+            <TweetCard tweets={tweets} />
+         </div>
 		</>
 	);
 }
