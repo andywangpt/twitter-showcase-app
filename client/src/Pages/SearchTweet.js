@@ -18,7 +18,11 @@ function SearchTweet() {
 	const [searchType, setSearchType] = useState("");
 
 	useEffect(() => {
-		fetch("api/tweets")
+		getData();
+	}, [searchValue, searchType]);
+
+	async function getData() {
+		await fetch("api/tweets")
 			.then((res) => res.json())
 			.then((data) => {
 				setTweets(data);
@@ -26,7 +30,7 @@ function SearchTweet() {
 			.catch(() => {
 				return <></>;
 			});
-	}, [searchValue, searchType]);
+	}
 
 	if (tweets.length === 0) {
 		return <></>;
@@ -37,8 +41,8 @@ function SearchTweet() {
 			<div className="bg container">
 				<div className="container-fluid d-flex w-75">
 					<div className="search-container container d-flex mw-100 mt-4 p-3 flex-column align-items-center rounded-5">
-                  <SearchBar
-                     tweets={tweets}
+						<SearchBar
+							tweets={tweets}
 							setTweets={setTweets}
 							searchValue={searchValue}
 							setSearchValue={setSearchValue}

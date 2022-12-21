@@ -21,19 +21,19 @@ app.get("/api/tweets", (req, res) => {
 	const dummyData = "user";
 	const searchValue = req.query.search_value;
 	const searchType = req.query.search_type; //req.query.search_type;
-	console.log(searchValue);
+	console.log("line 24: ", searchValue, searchType);  //search Value + Type does get passed in
 
-	if (searchType === "user") {
+   if (searchType === "user") { // if searchType is "user"
+      console.log("line 27: searchType === ", searchType)
 		const config = {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
 			},
 			params: {
 				count: 10,
-				screen_name: searchTerm,
+				screen_name: searchValue,
 			},
 		};
-
 		axios
 			.get("https://api.twitter.com/1.1/statuses/user_timeline.json", config)
 			.then((res) => {
@@ -42,13 +42,16 @@ app.get("/api/tweets", (req, res) => {
 				//res.send(arrayOfTweets);  //doesn't work here for some reason
 			})
 			.then(() => {
-				res.send(arrayOfTweets);
+            res.send(arrayOfTweets);
+            console.log("line 46: ", searchValue)
+            //console.log(arrayOfTweets[1])
 			})
 			.catch((error) => {
 				console.log(error);
 				res.send("something went wrong");
-			});
-	} else if (searchType === "content") {
+         });
+      
+	} else if (searchType === "content") {  //if searchType is "content"
 		const config = {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
@@ -71,7 +74,8 @@ app.get("/api/tweets", (req, res) => {
 			.catch((error) => {
 				console.log(error);
 				res.send("something went wrong");
-			});
+         });
+      
 	} else {
 		const config = {
 			headers: {
@@ -88,7 +92,7 @@ app.get("/api/tweets", (req, res) => {
 			//.get(timeLineUrl, {params: { screen_name: 'twitterapi' }})
 			.then((res) => {
 				arrayOfTweets = res.data.statuses;
-				console.log("line: 94", res.data);
+				//console.log("line: 94", res.data);
 				//res.send(arrayOfTweets);  //doesn't work here for some reason
 			})
 			.then(() => {
