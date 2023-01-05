@@ -13,7 +13,7 @@ function TweetCard({ tweets, tweetNumber }) {
 	//		tweets[tweetNumber].extended_entities.media[0].media_url || "";
 	//}
 
-	if (tweets.length === 0) {
+	if (tweets == 'undefined' || tweets.length === 0) {
 		return ;
 	}
 

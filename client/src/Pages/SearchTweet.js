@@ -21,8 +21,8 @@ function SearchTweet() {
 		getData();
 	}, [searchValue, searchType]);
 
-	async function getData() {
-		await fetch("api/tweets")
+	function getData() {
+		fetch("api/tweets")
 			.then((res) => res.json())
 			.then((data) => {
 				setTweets(data);
@@ -30,6 +30,7 @@ function SearchTweet() {
 			.catch(() => {
 				return <></>;
 			});
+		console.log("getData fetch('api/tweets')");
 	}
 
 	if (tweets.length === 0) {

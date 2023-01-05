@@ -4,14 +4,17 @@ import axios from "axios";
 import TweetCard from "./TweetCard";
 
 function SearchBar({
-   tweets,
+	tweets,
 	setTweets,
 	searchValue,
 	setSearchValue,
 	setSearchType,
 	searchType,
 }) {
+
 	const [userInput, setUserInput] = useState("");
+   const [runSearch, setRunSearch] = useState(false)
+  
 
 	const url = "/api/tweets";
 	const params = {
@@ -20,13 +23,19 @@ function SearchBar({
 	};
 
 	useEffect(() => {
-		if (searchValue) {
+		if (searchValue && runSearch) {
 			axios
-            .get(url, { params })
-            .then((res) => console.log("Data Sent - SearchBar.js Line 24"))  
-            .then((data) => {setTweets(data)})
-				.catch((err) => console.log("didn't send - SearchBar.js Line 25"));
-		}
+				.get(url, { params })
+				// .then((res) => console.log("Data Sent - SearchBar.js Line 24"))
+				.then((data) => {
+					//console.log(data);
+               setTweets(data.data);
+               setRunSearch(false);
+				})
+				.catch((err) => console.log("didn't send - SearchBar.js Line 35"));
+      }
+      
+      console.log("useEffect axios.get(url, params)")
 	}, [params]);
 
 	const handleInputChange = (e) => {
@@ -36,13 +45,15 @@ function SearchBar({
 	function searchUserButton(e) {
 		e.preventDefault();
 		setSearchValue(userInput);
-		setSearchType("user");
+      setSearchType("user");
+      setRunSearch(true)
 	}
 
 	function searchContentButton(e) {
 		e.preventDefault();
 		setSearchValue(userInput);
-		setSearchType("content");
+      setSearchType("content");
+      setRunSearch(true)
 	}
 
 	return (
@@ -71,11 +82,11 @@ function SearchBar({
 				>
 					Search By Content
 				</button>
-         </div>
-         
-         <div>
-            <TweetCard tweets={tweets} />
-         </div>
+			</div>
+
+			<div>
+				<TweetCard tweets={tweets} />
+			</div>
 		</>
 	);
 }

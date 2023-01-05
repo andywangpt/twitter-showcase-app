@@ -21,10 +21,11 @@ app.get("/api/tweets", (req, res) => {
 	const dummyData = "user";
 	const searchValue = req.query.search_value;
 	const searchType = req.query.search_type; //req.query.search_type;
-	console.log("line 24: ", searchValue, searchType);  //search Value + Type does get passed in
+	console.log("line 24: ", searchValue, searchType); //search Value + Type does get passed in
 
-   if (searchType === "user") { // if searchType is "user"
-      console.log("line 27: searchType === ", searchType)
+	if (searchType === "user") {
+		// if searchType is "user"
+		console.log("line 27: searchType === ", searchType);
 		const config = {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
@@ -42,22 +43,22 @@ app.get("/api/tweets", (req, res) => {
 				//res.send(arrayOfTweets);  //doesn't work here for some reason
 			})
 			.then(() => {
-            res.send(arrayOfTweets);
-            console.log("line 46: ", searchValue)
-            //console.log(arrayOfTweets[1])
+				res.send(arrayOfTweets);
+				console.log("line 46: ", searchValue);
+				//console.log(arrayOfTweets[1])
 			})
 			.catch((error) => {
 				console.log(error);
 				res.send("something went wrong");
-         });
-      
-	} else if (searchType === "content") {  //if searchType is "content"
+			});
+	} else if (searchType === "content") {
+		//if searchType is "content"
 		const config = {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
 			},
 			params: {
-				q: searchTerm,
+				q: searchValue,
 				result_type: "popular",
 			},
 		};
@@ -74,8 +75,7 @@ app.get("/api/tweets", (req, res) => {
 			.catch((error) => {
 				console.log(error);
 				res.send("something went wrong");
-         });
-      
+			});
 	} else {
 		const config = {
 			headers: {
