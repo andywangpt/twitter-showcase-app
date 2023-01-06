@@ -1,87 +1,92 @@
 import { Button } from "bootstrap";
 import React, { useState, useEffect } from "react";
 import "../Pages/RandomTweet.css";
-
+import axios from "axios";
+import TweetCard from "./Components/TweetCard";
 
 function RandomTweet() {
 	const [getTweetFrom, setGetTweetFrom] = useState("");
-   const [userId, setUserId] = useState("");
-   
-     const [isVisible, setIsVisible] = useState(false);
+	const [userId, setUserId] = useState("");
+	const [userChoice, setUserChoice] = useState(null);
+	const [flag, setFlag] = useState(false);
 
-			function handleShowOverlay() {
-				setIsVisible(true);
-			}
+	const [isVisible, setIsVisible] = useState(false);
 
-			function handleHideOverlay() {
-				setIsVisible(false);
-			}
+	function handleHideOverlay() {
+		setIsVisible(false);
+	}
 
 	function handleClick(e) {
-		//e.preventDefault();
+		e.preventDefault();
 
-		const userChoice = e.target.value;
-		console.log("userChoice ", userChoice);
+		const choice = e.target.value;
+		console.log("userChoice ", choice);
 
-		switch (userChoice) {
-			case "embark":
-				setGetTweetFrom("embark");
-				setUserId("12345");
-				break;
-			case "finals":
-				setGetTweetFrom("finals");
-				setUserId("");
-				break;
-			case "battlefield":
-				setGetTweetFrom("battlefield");
-				setUserId("");
-				break;
-			case "dice":
-				setGetTweetFrom("dice");
-				setUserId("");
-				break;
-			case "electronicArts":
-				setGetTweetFrom("electronicArts");
-				setUserId("");
-				break;
+		setUserChoice(choice);
+		setFlag(true);
+	}
+
+	useEffect(() => {
+		if (flag) {
+			switch (userChoice) {
+				case "embark":
+					setGetTweetFrom("embark");
+					setUserId("783214");
+					break;
+				case "finals":
+					setGetTweetFrom("finals");
+					setUserId("1557376951282712577");
+					break;
+				case "battlefield":
+					setGetTweetFrom("battlefield");
+					setUserId("27855118");
+					break;
+				case "dice":
+					setGetTweetFrom("dice");
+					setUserId("378186136");
+					break;
+				case "electronicArts":
+					setGetTweetFrom("electronicArts");
+					setUserId("15234657");
+					break;
+			}
+			setIsVisible(true);
+			setFlag(false);
+
+			searchUser().then((res) => {
+				const randomTweet = res.data;
+			});
 		}
-      console.log(getTweetFrom, userId);
-      setIsVisible(true);
-		return;
+	}, [flag, userChoice]);
+
+	async function searchUser() {
+		try {
+			const search = await axios.get(`/api/searchByUser?search=${userId}`);
+			return search;
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	return (
 		<>
-			<div className="bg container-sm">
+			<div className="bg container-sm w-75">
 				<h2 className="container bg-dark text-white w-50 d-block text-center my-5 p-2 rounded">
 					Random Tweet Page
 				</h2>
 
-				<div className="m-3 rounded-sm">
+				<div className="m-4 rounded-sm">
 					{isVisible && (
 						<div
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}
 						>
-							<div className="overlay-content  d-flex justify-content-end rounded-sm">
-								<button
-									className="btn-sm btn-danger m-2"
-									onClick={handleHideOverlay}
-								>
-									X
-								</button>
-							</div>
-							<div
-								id="tweet-container"
-								className="row w-100 bg-light rounded m-2 mb-3"
-								key='1223'
-							>
+							<div id="tweet-container" className="bg-light" key="1223">
 								<div className="col-md-9">
 									<div id="user-names" className="float-left w-100">
 										<div>
-											
 											<div className="float-start ml-3 mt-2">
-												<div>username</div>
+												<div>{userChoice}</div>
 												<div>@screen name</div>
 											</div>
 										</div>
@@ -92,18 +97,15 @@ function RandomTweet() {
 									<div className="w-100 h-100">
 										<div className="float-end mt-2" style={{ clear: "both" }}>
 											<span className="">#likes</span>
-											
 										</div>
 										<div className="float-end" style={{ clear: "both" }}>
 											<span>#recount</span>
-
 										</div>
 									</div>
 								</div>
 
 								<div className="col-md-12 m-2">text</div>
 
-	
 								<div className="row">
 									<div className="time-elements col">location</div>
 								</div>
@@ -111,6 +113,15 @@ function RandomTweet() {
 								<div className="card-footer text-muted row px-3 py-2">
 									<div className="time-elements col">created at</div>
 								</div>
+							</div>
+
+							<div className="overlay-content d-flex justify-content-center rounded-sm">
+								<button
+									className="btn-sm btn-danger m-1"
+									onClick={handleHideOverlay}
+								>
+									Close
+								</button>
 							</div>
 						</div>
 					)}

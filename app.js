@@ -105,6 +105,36 @@ app.get("/api/tweets", (req, res) => {
 	}
 });
 
+app.get("/api/searchByUser", async (req, res) => {
+	const search = req.query.search;
+
+	if (search) {
+		const config = {
+			headers: {
+				Authorization: `${BEARER_TOKEN}`,
+			},
+			params: {
+				//user_id: `${search}`,
+				user_id: "1059851910071619585",
+			},
+		};
+
+		try {
+			const response = await axios.get(
+				"https://api.twitter.com/1.1/users/lookup.json?",
+				config
+			);
+			res.send(response.data);
+			arrayOfTweets = response.data;
+			console.log("response.data",response.data[0].name);
+		} catch (error) {
+			console.log(error);
+			res.send("something went wrong");
+		}
+		console.log("searchUser Ran");
+	}
+});
+
 /*
 app.get("/api/users", (req, res) => {
 	axios
@@ -129,7 +159,3 @@ app.get("/api/users", (req, res) => {
 */
 
 app.listen(port);
-
-// getting user data need to send users to front end
-// sending user search term to the front end
-//
