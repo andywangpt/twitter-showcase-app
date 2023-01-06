@@ -1,10 +1,12 @@
-import { Button } from "bootstrap";
+//import { Button } from "bootstrap";
 import React, { useState, useEffect } from "react";
 import "../Pages/RandomTweet.css";
 import axios from "axios";
-import TweetCard from "./Components/TweetCard";
+//import TweetCard from "./Components/TweetCard";
+import OverlayTweet from "./Components/OverlayTweet";
 
 function RandomTweet() {
+	const [randomTweet, setRandomTweet] = useState("");
 	const [getTweetFrom, setGetTweetFrom] = useState("");
 	const [userId, setUserId] = useState("");
 	const [userChoice, setUserChoice] = useState(null);
@@ -12,26 +14,12 @@ function RandomTweet() {
 
 	const [isVisible, setIsVisible] = useState(false);
 
-	function handleHideOverlay() {
-		setIsVisible(false);
-	}
-
-	function handleClick(e) {
-		e.preventDefault();
-
-		const choice = e.target.value;
-		console.log("userChoice ", choice);
-
-		setUserChoice(choice);
-		setFlag(true);
-	}
-
 	useEffect(() => {
 		if (flag) {
 			switch (userChoice) {
 				case "embark":
 					setGetTweetFrom("embark");
-					setUserId("783214");
+					setUserId("1059851910071619585");
 					break;
 				case "finals":
 					setGetTweetFrom("finals");
@@ -48,18 +36,23 @@ function RandomTweet() {
 				case "electronicArts":
 					setGetTweetFrom("electronicArts");
 					setUserId("15234657");
-					break;
+               break;
+            default:
+               break;
 			}
 			setIsVisible(true);
 			setFlag(false);
 
 			searchUser().then((res) => {
-				const randomTweet = res.data;
+				const result = res.data[0];
+				console.log(result);
+				setRandomTweet(result);
 			});
 		}
 	}, [flag, userChoice]);
 
 	async function searchUser() {
+		console.log(getTweetFrom);
 		try {
 			const search = await axios.get(`/api/searchByUser?search=${userId}`);
 			return search;
@@ -68,9 +61,32 @@ function RandomTweet() {
 		}
 	}
 
+	function handleHideOverlay() {
+		setIsVisible(false);
+	}
+
+	function handleClick(e) {
+		e.preventDefault();
+
+		const choice = e.target.value;
+		setUserChoice(choice);
+		setFlag(true);
+	}
+
+	function handleLuckyButton() {
+      console.log("lucky");
+      getRandomNumber();
+		setUserChoice("");
+		setFlag(true);
+	}
+
+	function getRandomNumber() {
+		console.log("getRandomNumber");
+	}
+
 	return (
 		<>
-			<div className="bg container-sm w-75">
+			<div className="bg container-sm mw-50">
 				<h2 className="container bg-dark text-white w-50 d-block text-center my-5 p-2 rounded">
 					Random Tweet Page
 				</h2>
@@ -81,40 +97,7 @@ function RandomTweet() {
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}
 						>
-							<div id="tweet-container" className="bg-light" key="1223">
-								<div className="col-md-9">
-									<div id="user-names" className="float-left w-100">
-										<div>
-											<div className="float-start ml-3 mt-2">
-												<div>{userChoice}</div>
-												<div>@screen name</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div className="col-md-3">
-									<div className="w-100 h-100">
-										<div className="float-end mt-2" style={{ clear: "both" }}>
-											<span className="">#likes</span>
-										</div>
-										<div className="float-end" style={{ clear: "both" }}>
-											<span>#recount</span>
-										</div>
-									</div>
-								</div>
-
-								<div className="col-md-12 m-2">text</div>
-
-								<div className="row">
-									<div className="time-elements col">location</div>
-								</div>
-
-								<div className="card-footer text-muted row px-3 py-2">
-									<div className="time-elements col">created at</div>
-								</div>
-							</div>
-
+							<OverlayTweet randomTweet={randomTweet} />
 							<div className="overlay-content d-flex justify-content-center rounded-sm">
 								<button
 									className="btn-sm btn-danger m-1"
@@ -222,7 +205,10 @@ function RandomTweet() {
 				</div>
 
 				<div className="d-flex justify-content-center m-3">
-					<button className="btn btn-lg btn-outline-light rounded">
+					<button
+						className="btn btn-lg btn-outline-light rounded"
+						onClick={handleLuckyButton}
+					>
 						Feeling lucky?
 					</button>
 				</div>

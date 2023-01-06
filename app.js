@@ -35,6 +35,7 @@ app.get("/api/tweets", (req, res) => {
 				screen_name: searchValue,
 			},
 		};
+
 		axios
 			.get("https://api.twitter.com/1.1/statuses/user_timeline.json", config)
 			.then((res) => {
@@ -44,8 +45,6 @@ app.get("/api/tweets", (req, res) => {
 			})
 			.then(() => {
 				res.send(arrayOfTweets);
-				console.log("line 46: ", searchValue);
-				//console.log(arrayOfTweets[1])
 			})
 			.catch((error) => {
 				console.log(error);
@@ -88,12 +87,8 @@ app.get("/api/tweets", (req, res) => {
 		};
 		axios
 			.get(tweetSearchUrl, config)
-			//axios
-			//.get(timeLineUrl, {params: { screen_name: 'twitterapi' }})
 			.then((res) => {
 				arrayOfTweets = res.data.statuses;
-				//console.log("line: 94", res.data);
-				//res.send(arrayOfTweets);  //doesn't work here for some reason
 			})
 			.then(() => {
 				res.send(arrayOfTweets);
@@ -109,13 +104,14 @@ app.get("/api/searchByUser", async (req, res) => {
 	const search = req.query.search;
 
 	if (search) {
+		console.log("search ", search);
 		const config = {
 			headers: {
 				Authorization: `${BEARER_TOKEN}`,
 			},
 			params: {
 				//user_id: `${search}`,
-				user_id: "1059851910071619585",
+				user_id: `${search}`,
 			},
 		};
 
@@ -124,14 +120,14 @@ app.get("/api/searchByUser", async (req, res) => {
 				"https://api.twitter.com/1.1/users/lookup.json?",
 				config
 			);
+			console.log(response.data);
 			res.send(response.data);
-			arrayOfTweets = response.data;
-			console.log("response.data",response.data[0].name);
+			//arrayOfTweets = response.data;
 		} catch (error) {
 			console.log(error);
 			res.send("something went wrong");
 		}
-		console.log("searchUser Ran");
+		//console.log("response.data", response.data[0].name);
 	}
 });
 
