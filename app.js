@@ -112,14 +112,12 @@ app.get("/api/searchByUser", async (req, res) => {
 			params: {
 				//user_id: `${search}`,
 				user_id: `${search}`,
+				count: 10,
 			},
 		};
 
 		try {
-			const response = await axios.get(
-				"https://api.twitter.com/1.1/users/lookup.json?",
-				config
-			);
+			const response = await axios.get(timeLineUrl, config);
 			console.log(response.data);
 			res.send(response.data);
 			//arrayOfTweets = response.data;

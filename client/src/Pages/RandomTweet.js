@@ -2,57 +2,62 @@
 import React, { useState, useEffect } from "react";
 import "../Pages/RandomTweet.css";
 import axios from "axios";
-//import TweetCard from "./Components/TweetCard";
 import OverlayTweet from "./Components/OverlayTweet";
 
 function RandomTweet() {
 	const [randomTweet, setRandomTweet] = useState("");
-	const [getTweetFrom, setGetTweetFrom] = useState("");
+
 	const [userId, setUserId] = useState("");
 	const [userChoice, setUserChoice] = useState(null);
 	const [flag, setFlag] = useState(false);
-
 	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
 		if (flag) {
+			console.log("useeffect ran, userChoice =", userChoice);
 			switch (userChoice) {
 				case "embark":
-					setGetTweetFrom("embark");
+				case 1:
 					setUserId("1059851910071619585");
 					break;
 				case "finals":
-					setGetTweetFrom("finals");
+				case 2:
 					setUserId("1557376951282712577");
 					break;
 				case "battlefield":
-					setGetTweetFrom("battlefield");
+				case 3:
 					setUserId("27855118");
 					break;
 				case "dice":
-					setGetTweetFrom("dice");
+				case 4:
 					setUserId("378186136");
 					break;
 				case "electronicArts":
-					setGetTweetFrom("electronicArts");
+				case 5:
 					setUserId("15234657");
-               break;
-            default:
-               break;
+					break;
+				default:
+					break;
 			}
+
 			setIsVisible(true);
 			setFlag(false);
 
 			searchUser().then((res) => {
-				const result = res.data[0];
+				const random = getRandomNumber(10);
+				console.log("random ", random);
+				const result = res.data[random];
+
 				console.log(result);
 				setRandomTweet(result);
+				if (randomTweet == "undefined" || randomTweet.length === 0) {
+					return;
+				}
 			});
 		}
 	}, [flag, userChoice]);
 
 	async function searchUser() {
-		console.log(getTweetFrom);
 		try {
 			const search = await axios.get(`/api/searchByUser?search=${userId}`);
 			return search;
@@ -63,30 +68,66 @@ function RandomTweet() {
 
 	function handleHideOverlay() {
 		setIsVisible(false);
+		setUserChoice("");
 	}
 
 	function handleClick(e) {
 		e.preventDefault();
 
 		const choice = e.target.value;
-		setUserChoice(choice);
 		setFlag(true);
+		setUserChoice(choice);
 	}
 
 	function handleLuckyButton() {
-      console.log("lucky");
-      getRandomNumber();
-		setUserChoice("");
+      const random = getRandomNumber(5);
+      
+      /*
+      console.log(random);
+			switch (random) {
+            case 1:
+               setUserChoice("embark");
+               setUserId("1059851910071619585");
+               console.log('case ran')
+					break;
+
+				case "2":
+               setUserId("1557376951282712577");
+                           console.log("case ran");
+					break;
+		
+				case "3":
+               setUserId("27855118");
+                           console.log("case ran");
+					break;
+
+				case "4":
+               setUserId("378186136");
+                           console.log("case ran");
+					break;
+
+				case "5":
+               setUserId("15234657");
+                           console.log("case ran");
+					break;
+				default:
+					break;
+			}
+*/
+		setUserChoice(random);
+
+
 		setFlag(true);
+		console.log("userChoice ", userChoice);
 	}
 
-	function getRandomNumber() {
-		console.log("getRandomNumber");
+	function getRandomNumber(factor) {
+		return Math.floor(Math.random() * factor) + 1;
 	}
 
 	return (
 		<>
-			<div className="bg container-sm mw-50">
+			<div className="container-sm mw-50">
 				<h2 className="container bg-dark text-white w-50 d-block text-center my-5 p-2 rounded">
 					Random Tweet Page
 				</h2>
@@ -98,14 +139,6 @@ function RandomTweet() {
 							onClick={handleHideOverlay}
 						>
 							<OverlayTweet randomTweet={randomTweet} />
-							<div className="overlay-content d-flex justify-content-center rounded-sm">
-								<button
-									className="btn-sm btn-danger m-1"
-									onClick={handleHideOverlay}
-								>
-									Close
-								</button>
-							</div>
 						</div>
 					)}
 				</div>
@@ -218,6 +251,20 @@ function RandomTweet() {
 }
 
 export default RandomTweet;
+
+/*
+overlay close button
+
+							<div className="overlay-content d-flex justify-content-center rounded-sm">
+								<button
+									className="btn-sm btn-danger m-1"
+									onClick={handleHideOverlay}
+								>
+									Close
+								</button>
+							</div>
+
+*/
 
 /*
 		<>
