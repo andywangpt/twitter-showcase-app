@@ -27,8 +27,9 @@ function SearchTweet() {
 			.then((data) => {
 				setTweets(data);
 			})
-			.catch(() => {
-				return <></>;
+         .catch(() => {
+            console.log(tweets)
+            return <></>;
 			});
 		console.log("getData fetch('api/tweets')");
 	}

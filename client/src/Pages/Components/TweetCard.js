@@ -13,9 +13,15 @@ function TweetCard({ tweets, tweetNumber }) {
 	//		tweets[tweetNumber].extended_entities.media[0].media_url || "";
 	//}
 
-	if (tweets == 'undefined' || tweets.length === 0) {
-		return ;
+	if (tweets === "undefined" || tweets.length === 0) {
+		return;
 	}
+
+   console.log(tweets)
+
+   if (tweets == "something went wrong") {
+      return <>Error: User Not Found</>;
+   }
 
 	return (
 		<>
