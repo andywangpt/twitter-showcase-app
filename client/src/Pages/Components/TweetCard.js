@@ -16,13 +16,11 @@ function TweetCard({ tweets, tweetNumber }) {
 	if (tweets === "undefined" || tweets.length === 0) {
 		return;
 	}
-
-   console.log(tweets)
-
    if (tweets == "something went wrong") {
       return <>Error: User Not Found</>;
    }
 
+   console.log(tweets)
 	return (
 		<>
 			{tweets.map((tweet, key) => (
@@ -63,7 +61,20 @@ function TweetCard({ tweets, tweetNumber }) {
 					<div className="col-md-12 m-2">{tweet.text}</div>
 
 					<div id="media-container" className="col-md-12 m-2">
-						<img className="col" src={tweetMedia[tweetNumber]}></img>
+						{tweet.extended_entities ? (
+							<img
+								className="col"
+								src={tweet.extended_entities.media[0].media_url}
+							/>
+						) : (
+							<></>
+						)}
+
+               {tweet.extended_entities ? (
+						<video width="320" height="240" controls>
+							<source src={tweet.extended_entities.media[0].url} type="video/mp4" />
+						</video> ) :
+                  (<></>)}
 					</div>
 					<div className="row">
 						<div className="time-elements col">{tweet.user.location}</div>

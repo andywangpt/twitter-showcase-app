@@ -43,15 +43,15 @@ function RandomTweet() {
 			setIsVisible(true);
 			setFlag(false);
 
-			searchUser().then((res) => {
+			searchUser().then(async (res) => {
 				const random = getRandomNumber(10);
 				console.log("random ", random);
-				const result = res.data[random];
+				const result = await res.data[random];
 
 				console.log(result);
 				setRandomTweet(result);
-				if (randomTweet == "undefined" || randomTweet.length === 0) {
-					return;
+				if (randomTweet === "undefined" || randomTweet.length === 0) {
+					return <>slow down</>;
 				}
 			});
 		}
@@ -80,43 +80,8 @@ function RandomTweet() {
 	}
 
 	function handleLuckyButton() {
-      const random = getRandomNumber(5);
-      
-      /*
-      console.log(random);
-			switch (random) {
-            case 1:
-               setUserChoice("embark");
-               setUserId("1059851910071619585");
-               console.log('case ran')
-					break;
-
-				case "2":
-               setUserId("1557376951282712577");
-                           console.log("case ran");
-					break;
-		
-				case "3":
-               setUserId("27855118");
-                           console.log("case ran");
-					break;
-
-				case "4":
-               setUserId("378186136");
-                           console.log("case ran");
-					break;
-
-				case "5":
-               setUserId("15234657");
-                           console.log("case ran");
-					break;
-				default:
-					break;
-			}
-*/
+		const random = getRandomNumber(5);
 		setUserChoice(random);
-
-
 		setFlag(true);
 		console.log("userChoice ", userChoice);
 	}

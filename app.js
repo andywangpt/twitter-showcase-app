@@ -3,9 +3,11 @@ const path = require("path");
 const axios = require("axios");
 const app = express();
 
+require("dotenv").config();
+
 const port = 5001;
-const BEARER_TOKEN =
-	"Bearer AAAAAAAAAAAAAAAAAAAAAAWphgEAAAAAHyXA3T%2FB%2B9dS%2FZAtP6TG9n2%2B1Mo%3D5JR8gu58DzqXiA7IapPAuTM7lpwFs0b04d6fblMg6GldoHF08m";
+
+const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN;
 
 const tweetSearchUrl = "https://api.twitter.com/1.1/search/tweets.json?";
 const userSearchUrl = "https://api.twitter.com/1.1/users/search.json?";

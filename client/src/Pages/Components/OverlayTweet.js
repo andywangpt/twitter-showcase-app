@@ -3,8 +3,7 @@ import icons8love48 from "./icons8love48.png";
 import icons8retweet from "./icons8retweet.png";
 
 function OverlayTweet({ randomTweet }) {
-
-	if (randomTweet == "undefined" || randomTweet.length === 0) {
+	if (randomTweet === "undefined" || randomTweet.length === 0) {
 		return;
 	}
 
@@ -41,6 +40,17 @@ function OverlayTweet({ randomTweet }) {
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div className="row">
+					{randomTweet.extended_entities ? (
+						<img
+							className="col mw-fit-content"
+							src={randomTweet.extended_entities.media[0].media_url}
+						/>
+					) : (
+						<></>
+					)}
 				</div>
 
 				<div className="row">
