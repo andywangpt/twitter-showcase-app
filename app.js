@@ -11,17 +11,7 @@ const timeLineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 
 let arrayOfTweets = [];
 
-if (process.env.NODE_ENV === "production") {
-	// Exprees will serve up production assets
-	app.use(express.static("client/build"));
-
-	// Express serve up index.html file if it doesn't recognize route
-	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-	});
-}
-
-app.use("/", express.static(path.join(__dirname, "client/build"))); //still don't understand express.static
+app.use("/", express.static(path.join(__dirname, "client/build", "/src/App.js"))); //still don't understand express.static
 
 app.get("/api/tweets", (req, res) => {
 	const searchValue = req.query.search_value;

@@ -3,7 +3,7 @@ A Twitter API Application to search for twitter users or content (React)
 
 Try it out <a href=https://boiling-forest-68325.herokuapp.com/>here</a>.
 
-<img width="1254" alt="Screen Shot 2022-07-08 at 12 06 11 PM" src="https://user-images.githubusercontent.com/95507674/178055162-09cc970a-3f91-491c-a06f-aa2bcbaa7890.png">
+<img width="1254" alt="Screen Shot 2022-07-08 at 12 06 11 PM" src="">
 
 
 <b>Summary</b>
