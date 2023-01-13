@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
-//import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Pages/SearchTweet.css";
-import TweetCard from "./Components/TweetCard";
 import SearchBar from "./Components/SearchBar";
 import SearchFooter from "./Components/SearchFooter";
 
 function SearchTweet() {
-	//const [userInput, setUserInput] = useState("");
-	//const [searchInput, setSearchInput] = useState("");
-
 	const [tweets, setTweets] = useState([]);
-	//const [tweetNumber, setTweetNumber] = useState([0]);
-	let tweetNumber = 0;
 
 	const [searchValue, setSearchValue] = useState("");
 	const [searchType, setSearchType] = useState("");
@@ -31,7 +24,6 @@ function SearchTweet() {
             console.log(tweets)
             return <></>;
 			});
-		console.log("getData fetch('api/tweets')");
 	}
 
 	if (tweets.length === 0) {

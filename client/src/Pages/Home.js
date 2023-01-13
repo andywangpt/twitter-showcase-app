@@ -1,5 +1,5 @@
 import React from "react";
-import "../Pages/Home.css"
+import "../Pages/Home.css";
 import iconAccuracy from "../Assets/icons8-accuracy-91.png";
 
 function Home() {
@@ -29,7 +29,7 @@ function Home() {
 							</div>
 						</div>
 
-						<p className="container lead m-auto py-3">
+						<div className="container lead m-auto py-3">
 							<div className="row m-2">
 								<img className="icon-accuracy px-1" src={iconAccuracy} />
 								<div className="col-lg px-1">
@@ -51,9 +51,10 @@ function Home() {
 									gives users the content they want.
 								</div>
 							</div>
-						</p>
+						</div>
 					</div>
 				</div>
+
 				<div className="footer container d-flex">
 					<a
 						href="../Assets/twitter.png"
