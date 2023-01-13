@@ -11,7 +11,7 @@ const timeLineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 
 let arrayOfTweets = [];
 
-app.use("/", express.static(path.join(__dirname, "client/build"))); //still don't understand express.static
+app.use("/", express.static(path.join(__dirname, "client", "build"))); //still don't understand express.static
 
 app.get("/api/tweets", (req, res) => {
 	const searchValue = req.query.search_value;
