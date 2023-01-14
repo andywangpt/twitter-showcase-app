@@ -4,7 +4,7 @@ import "../Pages/SearchTweet.css";
 import SearchBar from "./Components/SearchBar";
 import SearchFooter from "./Components/SearchFooter";
 
-function SearchTweet() {
+function SearchPage() {
 	const [tweets, setTweets] = useState([]);
 
 	const [searchValue, setSearchValue] = useState("");
@@ -51,7 +51,7 @@ function SearchTweet() {
 	);
 }
 
-export default SearchTweet;
+export default SearchPage;
 
 // add search bar - search by user or content
 // tweet container

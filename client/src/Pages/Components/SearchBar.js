@@ -25,9 +25,7 @@ function SearchBar({
 		if (searchValue && runSearch) {
 			axios
 				.get(url, { params })
-				// .then((res) => console.log("Data Sent - SearchBar.js Line 24"))
 				.then((data) => {
-					//console.log(data);
 					setTweets(data.data);
 					setRunSearch(false);
 
@@ -36,12 +34,9 @@ function SearchBar({
 					}
 				})
 				.catch((err) => {
-					console.log("didn't send - SearchBar.js Line 35");
 					console.log(err);
 				});
 		}
-
-		console.log("useEffect axios.get(url, params)");
 	}, [params]);
 
 	const handleInputChange = (e) => {

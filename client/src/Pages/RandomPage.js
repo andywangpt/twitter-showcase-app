@@ -4,7 +4,7 @@ import "../Pages/RandomTweet.css";
 import axios from "axios";
 import OverlayTweet from "./Components/OverlayTweet";
 
-function RandomTweet() {
+function RandomPage() {
 	const [randomTweet, setRandomTweet] = useState("");
 
 	const [userId, setUserId] = useState("");
@@ -215,18 +215,4 @@ function RandomTweet() {
 	);
 }
 
-export default RandomTweet;
-
-/*
-overlay close button
-
-							<div className="overlay-content d-flex justify-content-center rounded-sm">
-								<button
-									className="btn-sm btn-danger m-1"
-									onClick={handleHideOverlay}
-								>
-									Close
-								</button>
-							</div>
-
-*/
+export default RandomPage;

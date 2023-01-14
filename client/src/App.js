@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import NavBar from "./Components/NavBar";
 import Home from "./Pages/Home";
-import RandomTweet from "./Pages/RandomTweet";
-import SearchTweet from "./Pages/SearchTweet";
+import RandomPage from "./Pages/RandomPage";
+import SearchPage from "./Pages/SearchPage";
 import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
 				<NavBar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/randomtweet" element={<RandomTweet />} />
-					<Route path="/searchtweet" element={<SearchTweet />} />
+					<Route path="/randomtweet" element={<RandomPage />} />
+					<Route path="/searchtweet" element={<SearchPage />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</Router>
