@@ -13,6 +13,8 @@ let arrayOfTweets = [];
 
 app.use("/", express.static(path.join(__dirname, "client", "build"))); //still don't understand express.static
 
+console.log(path.join(__dirname, "client", "build"));
+
 app.get("/api/tweets", (req, res) => {
 	const searchValue = req.query.search_value;
 	const searchType = req.query.search_type;
@@ -111,8 +113,8 @@ app.get("/api/searchByUser", async (req, res) => {
 	}
 });
 
-app.get("*", async (req, res) => {
-	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+//app.get("*", async (req, res) => {
+//	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+//});
 
 app.listen(port);
