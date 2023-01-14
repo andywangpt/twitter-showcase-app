@@ -4,7 +4,7 @@ import icons8retweet from "./icons8retweet.png";
 
 function OverlayTweet({ randomTweet }) {
 	if (randomTweet === "undefined") {
-		return <></>;
+		return ;
 	}
 
 	return (
