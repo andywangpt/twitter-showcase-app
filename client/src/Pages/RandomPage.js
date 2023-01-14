@@ -43,13 +43,15 @@ function RandomPage() {
 			setFlag(false);
 
 			searchUser().then(async (res) => {
-				const random = getRandomNumber(10);
-				console.log("random ", random);
-				const result = await res.data[random];
-				setRandomTweet(result);
-				setIsVisible(true);
+				if (res.data && res.data.length) {
+					const random = getRandomNumber(10);
+					console.log("random ", random);
+					const result = await res.data[random];
+					setRandomTweet(result);
+					setIsVisible(true);
 
-				console.log(isVisible, randomTweet);
+					console.log(isVisible, randomTweet);
+				}
 			});
 		}
 	}, [flag, userChoice]);
