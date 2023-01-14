@@ -40,19 +40,16 @@ function RandomTweet() {
 					break;
 			}
 
-			setIsVisible(true);
 			setFlag(false);
 
 			searchUser().then(async (res) => {
 				const random = getRandomNumber(10);
 				console.log("random ", random);
 				const result = await res.data[random];
-
-				console.log(result);
 				setRandomTweet(result);
-				if (randomTweet === "undefined" || randomTweet.length === 0) {
-					return <>slow down</>;
-				}
+				setIsVisible(true);
+
+				console.log(isVisible, randomTweet);
 			});
 		}
 	}, [flag, userChoice]);
@@ -102,8 +99,10 @@ function RandomTweet() {
 						<div
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}
-                  >
-                     <span className="d-flex justify-content-center text-secondary m-1">Click on tweet to close</span>
+						>
+							<span className="d-flex justify-content-center text-secondary m-1">
+								Click on tweet to close
+							</span>
 							<OverlayTweet randomTweet={randomTweet} />
 						</div>
 					)}
