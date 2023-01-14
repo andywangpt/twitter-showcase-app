@@ -3,6 +3,8 @@ import icons8love48 from "./icons8love48.png";
 import icons8retweet from "./icons8retweet.png";
 
 function OverlayTweet({ randomTweet }) {
+
+   console.log({randomTweet})
 	if (randomTweet === "undefined") {
 		return ;
 	}
