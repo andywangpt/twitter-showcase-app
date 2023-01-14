@@ -45,8 +45,10 @@ function RandomPage() {
 				if (res.data && res.data.length) {
 					const random = getRandomNumber(6);
 					const result = await res.data[random];
-					setRandomTweet(result);
-					setIsVisible(true);
+					if (result) {
+						setRandomTweet(result);
+						setIsVisible(true);
+					}
 				}
 			});
 		}
