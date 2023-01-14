@@ -43,7 +43,7 @@ function RandomPage() {
 
 			searchUser().then(async (res) => {
 				if (res.data && res.data.length) {
-					const random = getRandomNumber(10);
+					const random = getRandomNumber(6);
 					const result = await res.data[random];
 					setRandomTweet(result);
 					setIsVisible(true);
@@ -98,9 +98,9 @@ function RandomPage() {
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}
 						>
-							<span className="d-flex justify-content-center text-secondary m-1">
+							<p className="d-flex justify-content-center text-secondary m-1">
 								Click on tweet to close
-							</span>
+							</p>
 							<OverlayTweet randomTweet={randomTweet} />
 						</div>
 					)}
