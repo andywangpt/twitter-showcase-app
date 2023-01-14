@@ -14,7 +14,6 @@ function RandomPage() {
 
 	useEffect(() => {
 		if (flag) {
-			console.log("useeffect ran, userChoice =", userChoice);
 			switch (userChoice) {
 				case "embark":
 				case 1:
@@ -45,12 +44,9 @@ function RandomPage() {
 			searchUser().then(async (res) => {
 				if (res.data && res.data.length) {
 					const random = getRandomNumber(10);
-					console.log("random ", random);
 					const result = await res.data[random];
 					setRandomTweet(result);
 					setIsVisible(true);
-
-					console.log(isVisible, randomTweet);
 				}
 			});
 		}

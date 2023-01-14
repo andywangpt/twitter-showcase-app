@@ -3,51 +3,52 @@ import { Link } from "react-router-dom";
 //import aimLogo from "../Assets/icons8-aim-64.png";
 //import targetIcon from "../Assets/icons8-target-100.png";
 import accuracyIcon from "../Assets/icons8-accuracy-90.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 
 function NavBar() {
 	return (
-		<nav className="navbar navbar-dark navbar-expand-lg py-0">
-			<a className="navbar-brand row mr-1">
-				{" "}
-				{/*href="#"*/}
-				<img
-					src={accuracyIcon}
-					width="50"
-					height="50"
-					className="d-inline-block align-center ml-2 mr-0 col-sm pr-0"
-					alt="aim logo"
-				/>
-				{/*<h3 className="col align-self-center font-weight-bolder">FPS Game Dev Tweet Tracker</h3>*/}
-			</a>
+		<>
+			<nav className="navbar navbar-dark navbar-expand-sm py-0">
+				<a className="navbar-brand row mr-1">
+					<img
+						src={accuracyIcon}
+						width="50"
+						height="50"
+						className="d-inline-block align-center ml-2 mr-0 col-sm pr-0"
+						alt="aim logo"
+					/>
+				</a>
 
-			<button
-				className="navbar-toggler"
-				data-toggle="collapse"
-				data-target="#navbarCollapse"
-			>
-				<span className="navbar-toggler-icon"></span>
-			</button>
+				<button
+					className="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#navbarCollapse"
+				>
+					<span className="navbar-toggler-icon"></span>
+				</button>
 
-			<div className="collapse navbar-collapse" id="navbarCollapse">
-				<ul className="navbar-nav mr-auto text-uppercase">
-					<li className="navbar-item m-1">
-						<Link className="nav-link" to="/">
-							<h3>Home</h3>
-						</Link>
-					</li>
-					<li className="navbar-item m-1">
-						<Link className="nav-link" to="/searchtweet">
-							<h3>Search Tweets</h3>
-						</Link>
-					</li>
-					<li className="navbar-item m-1">
-						<Link className="nav-link" to="randomtweet">
-							<h3>Random Tweets</h3>
-						</Link>
-					</li>
-				</ul>
-			</div>
-		</nav>
+				<div className="navbar-collapse collapse" id="navbarCollapse">
+					<ul className="nav navbar-nav mr-auto text-uppercase">
+						<li className="navbar-item m-1">
+							<Link className="nav-link" to="/">
+								Home
+							</Link>
+						</li>
+						<li className="navbar-item m-1">
+							<Link className="nav-link" to="/searchtweet">
+								Search Tweets
+							</Link>
+						</li>
+						<li className="navbar-item m-1">
+							<Link className="nav-link" to="randomtweet">
+								Random Tweets
+							</Link>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</>
 	);
 }
 
