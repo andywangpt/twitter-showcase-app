@@ -83,6 +83,7 @@ function RandomTweet() {
 		const random = getRandomNumber(5);
 		setUserChoice(random);
 		setFlag(true);
+		setIsVisible(false);
 	}
 
 	function getRandomNumber(factor) {
@@ -101,7 +102,8 @@ function RandomTweet() {
 						<div
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}
-						>
+                  >
+                     <span className="d-flex justify-content-center text-secondary m-1">Click on tweet to close</span>
 							<OverlayTweet randomTweet={randomTweet} />
 						</div>
 					)}
