@@ -43,7 +43,7 @@ function RandomPage() {
 
 			searchUser().then(async (res) => {
 				if (res.data && res.data.length) {
-					const random = getRandomNumber(6);
+					const random = getRandomNumber(5);
 					const result = await res.data[random];
 					if (result) {
 						setRandomTweet(result);
