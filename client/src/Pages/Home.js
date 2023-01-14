@@ -17,28 +17,26 @@ function Home() {
 								src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
 								alt="twitter logo"
 							/>
-							<div className="img-overlay">
-								<button className="btn  btn-outline-light px-5">
-									SEARCH TWEET
-								</button>
-							</div>
-							<div className="img-overlay-2">
-								<button className="btn btn-outline-light px-5">
-									RANDOM TWEET
-								</button>
-							</div>
 						</div>
 
 						<div className="container lead m-auto py-3">
 							<div className="row m-2">
-								<img className="icon-accuracy px-1" src={iconAccuracy} />
+								<img
+									className="icon-accuracy px-1"
+									src={iconAccuracy}
+									alt="icon"
+								/>
 								<div className="col-lg px-1">
 									Use SEARCH TWEETS find the latest game development tweets from
 									my favorite FPS gaming studios.
 								</div>
 							</div>
 							<div className="row m-2">
-								<img className="icon-accuracy px-1" src={iconAccuracy} />
+								<img
+									className="icon-accuracy px-1"
+									src={iconAccuracy}
+									alt="accuracy"
+								/>
 								<div className="col-lg px-1">
 									Use RANDOM TWEETS to find a tweet from one of the FPS game
 									studios

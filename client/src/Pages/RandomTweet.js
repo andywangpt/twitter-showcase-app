@@ -97,7 +97,7 @@ function RandomTweet() {
 				</h2>
 
 				<div className="m-4 rounded-sm">
-					{isVisible && (
+					{isVisible && randomTweet && (
 						<div
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}

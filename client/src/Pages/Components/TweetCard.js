@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import icons8love48 from "./icons8love48.png";
 import icons8retweet from "./icons8retweet.png";
 
-let tweetMedia = [];
+//let tweetMedia = [];
 
 function TweetCard({ tweets, tweetNumber }) {
 	tweetNumber++;
@@ -16,7 +16,7 @@ function TweetCard({ tweets, tweetNumber }) {
 	if (tweets === "undefined" || tweets.length === 0) {
 		return;
 	}
-	if (tweets == "something went wrong") {
+	if (tweets === "something went wrong") {
 		return <>Error: User Not Found</>;
 	}
 
@@ -65,18 +65,8 @@ function TweetCard({ tweets, tweetNumber }) {
 							<img
 								className="col"
 								src={tweet.extended_entities.media[0].media_url}
+								alt="tweet entities"
 							/>
-						) : (
-							<></>
-						)}
-
-						{tweet.extended_entities ? (
-							<video width="320" height="240" controls>
-								<source
-									src={tweet.extended_entities.media[0].url}
-									type="video/mp4"
-								/>
-							</video>
 						) : (
 							<></>
 						)}
