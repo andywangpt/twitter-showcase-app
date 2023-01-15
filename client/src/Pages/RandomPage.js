@@ -95,7 +95,7 @@ function RandomPage() {
 				</h2>
 
 				<div className="m-4 rounded-sm">
-					{isVisible && randomTweet && (
+					{isVisible && randomTweet.text && (
 						<div
 							className="bg-light overlay rounded-lg"
 							onClick={handleHideOverlay}
