@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Pages/SearchTweet.css";
 import SearchBar from "./Components/SearchBar";
 import SearchFooter from "./Components/SearchFooter";
+import axios from 'axios';
 
 function SearchPage() {
 	const [tweets, setTweets] = useState([]);
@@ -12,6 +13,28 @@ function SearchPage() {
 
 	useEffect(() => {
 		getData();
+	}, []);
+
+	useEffect(() => {
+		const url = "/api/tweets";
+		const params = {
+			search_value: searchValue,
+			search_type: searchType,
+		};
+
+		if (searchValue) {
+			axios
+				.get(url, { params })
+				.then((data) => {
+					setTweets(data.data);
+					if (tweets == "undefined" || tweets.length === 0) {
+						return;
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 	}, [searchValue, searchType]);
 
 	function getData() {
@@ -20,9 +43,9 @@ function SearchPage() {
 			.then((data) => {
 				setTweets(data);
 			})
-         .catch(() => {
-            console.log(tweets)
-            return <></>;
+			.catch(() => {
+				console.log(tweets);
+				return <></>;
 			});
 	}
 

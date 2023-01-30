@@ -15,30 +15,6 @@ function SearchBar({
 	const [userInput, setUserInput] = useState("");
 	const [runSearch, setRunSearch] = useState(false);
 
-	const url = "/api/tweets";
-	const params = {
-		search_value: searchValue,
-		search_type: searchType,
-	};
-
-	useEffect(() => {
-		if (searchValue && runSearch) {
-			axios
-				.get(url, { params })
-				.then((data) => {
-					setTweets(data.data);
-					setRunSearch(false);
-
-					if (tweets == "undefined" || tweets.length === 0) {
-						return;
-					}
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		}
-	}, [params]);
-
 	const handleInputChange = (e) => {
 		setUserInput(e.target.value);
 	};

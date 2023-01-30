@@ -4,6 +4,8 @@ const path = require("path");
 const axios = require("axios");
 const app = express();
 
+const twitterService = require("./twitter-service");
+
 const port = 5001;
 const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN;
 const tweetSearchUrl = "https://api.twitter.com/1.1/search/tweets.json?";
@@ -15,78 +17,34 @@ app.use("/", express.static(path.join(__dirname, "client", "build"))); //still d
 
 console.log(path.join(__dirname, "client", "build"));
 
-app.get("/api/tweets", (req, res) => {
+app.get("/api/tweets", async (req, res) => {
 	const searchValue = req.query.search_value;
 	const searchType = req.query.search_type;
 
 	if (searchType === "user") {
-		const config = {
-			headers: {
-				Authorization: `${BEARER_TOKEN}`,
-			},
-			params: {
-				count: 10,
-				screen_name: searchValue,
-			},
-		};
-		axios
-			.get(timeLineUrl, config)
-			.then((res) => {
-				arrayOfTweets = res.data;
-				//res.send(arrayOfTweets);  //doesn't work here for some reason
-			})
-			.then(() => {
-				res.send(arrayOfTweets);
-			})
-			.catch((error) => {
-				console.log(error);
-				res.send("something went wrong");
-			});
+		try {
+			const tweets = await twitterService.searchByUser(searchValue);
+			res.send(tweets);
+		} catch (error) {
+			console.log(error);
+			res.send("something went wrong");
+		}
 	} else if (searchType === "content") {
-		const config = {
-			headers: {
-				Authorization: `${BEARER_TOKEN}`,
-			},
-			params: {
-				q: searchValue,
-				result_type: "popular",
-			},
-		};
-		axios
-			.get(tweetSearchUrl, config)
-			.then((res) => {
-				arrayOfTweets = res.data.statuses;
-				//res.send(arrayOfTweets);  //doesn't work here for some reason
-			})
-			.then(() => {
-				res.send(arrayOfTweets);
-			})
-			.catch((error) => {
-				console.log(error);
-				res.send("something went wrong");
-			});
+		try {
+			const tweets = await twitterService.searchByContent(searchValue);
+			res.send(tweets);
+		} catch (error) {
+			console.log(error);
+			res.send("something went wrong");
+		}
 	} else {
-		const config = {
-			headers: {
-				Authorization: `${BEARER_TOKEN}`,
-			},
-			params: {
-				q: "fps",
-				result_type: "popular",
-			},
-		};
-		axios
-			.get(tweetSearchUrl, config)
-			.then((res) => {
-				arrayOfTweets = res.data.statuses;
-			})
-			.then(() => {
-				res.send(arrayOfTweets);
-			})
-			.catch((error) => {
-				console.log(error);
-				res.send("something went wrong");
-			});
+		try {
+			const tweets = await twitterService.defaultSearch(searchValue);
+			res.send(tweets);
+		} catch (error) {
+			console.log(error);
+			res.send("something went wrong");
+		}
 	}
 });
 
