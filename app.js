@@ -66,4 +66,8 @@ app.get("/api/searchByUser", async (req, res) => {
 	}
 });
 
+app.get("*", async (req, res) => {
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.listen(port);
