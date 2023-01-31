@@ -8,14 +8,9 @@ const twitterService = require("./twitter-service");
 
 const port = 5001;
 const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN;
-const tweetSearchUrl = "https://api.twitter.com/1.1/search/tweets.json?";
 const timeLineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 
-let arrayOfTweets = [];
-
-app.use("/", express.static(path.join(__dirname, "client", "build"))); //still don't understand express.static
-
-console.log(path.join(__dirname, "client", "build"));
+app.use("/", express.static(path.join(__dirname, "client", "build")));
 
 app.get("/api/tweets", async (req, res) => {
 	const searchValue = req.query.search_value;
