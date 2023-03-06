@@ -194,7 +194,7 @@ function RandomPage() {
 							<img
 								className="logo rounded-circle mt-2"
 								alt="dice logo"
-								src="https://pbs.twimg.com/profile_images/1555213204141359104/TUPLumee_400x400.png"
+								src="https://pbs.twimg.com/profile_images/1612360888345821184/NV7TkGiZ_400x400.jpg"
 							></img>
 							<p className="mb-0 px-5">DICE</p>
 							<p>@EA_DICE</p>
