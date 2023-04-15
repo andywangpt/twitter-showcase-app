@@ -7,11 +7,17 @@ function Home() {
 		<>
 			<div className="bg container">
 				<div className="container-fluid d-flex pb-1">
-               <div className="home-container container-lg p-3 my-3 text-black align-items-center rounded-5">
-                  <h1 className="warning">As of 4/14/23, Twitter has removed my access to their API along with most of the developer community.  Please see the other projects in my portfolio.</h1>
+					<div className="home-container container-lg p-3 my-3 text-black align-items-center rounded-5">
 						<h1 className="row justify-content-center w-75 p-1 m-auto mb-3 bg-dark text-white rounded">
 							The Latest Tweets in FPS Gaming
+                  </h1>
+                  
+						<h1 className="d-flex text-center text-light bg-danger rounded-1">
+							As of 4/14/23, Twitter has removed my access to their API along
+							with most of the developer community. Please see the other
+							projects in my portfolio.
 						</h1>
+
 						<div className="img-wrapper">
 							<img
 								className="img-responsive twitter-logo mx-auto d-block img-fluid max-width:50%"
