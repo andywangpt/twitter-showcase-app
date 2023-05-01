@@ -12,11 +12,9 @@ function Home() {
 							The Latest Tweets in FPS Gaming
                   </h1>
                   
-						<h1 className="d-flex text-center text-light bg-danger rounded-1">
-							As of 4/14/23, Twitter has removed my access to their API along
-							with most of the developer community. Please see the other
-							projects in my portfolio.
-						</h1>
+						<h2 className="d-flex text-center text-light bg-danger rounded-1">
+							As of 4/14/23, Twitter has stated that they would be limiting developers from accessing their free API.  As a result, site functionality may or may not be limited.
+						</h2>
 
 						<div className="img-wrapper">
 							<img
